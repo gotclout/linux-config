@@ -121,13 +121,14 @@ fi
 
 # ENV
 MHOME=/home/rfoster
+
 PATH=$PATH:$BOWER_HOME/bin:$MHOME/utils/scripts
 BOWER_HOME=$MHOME/utils/node_modules/bower
 
 LD_LIBRARY_PATH=/lib:/lib64:/usr/lib:/etc/libvirt:$BOWER_HOME/lib
 PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/lib/x86_64-linux-gnu
 
-#shortcuts
+# shortcuts
 alias mtar='tar -czvf'
 alias utar='tar -xzvf'
 
@@ -143,15 +144,21 @@ alias vi='/usr/bin/vim'
 alias vmm='virt-manager'
 alias dif='tkdiff &' 
 alias python='python3.4'
+
+# launch crome from terminal ignore output
 alias chrome='/usr/bin/google-chrome-stable &>/dev/null'
 
-alias amsk='chmod 755 -R'
-alias rmsk='chmod 744 -R'
-alias wmsk='chmod 766 -R'
+# permissions
+alias amsk='chmod 755 -R' # rx
+alias wmsk='chmod 766 -R' # rw
+alias rmsk='chmod 744 -R' # r
 
+# mount encrypted drives
 alias mmnt='$MHOME/utils/scripts/mmnt.sh'
 alias umnt='$MHOME/utils/scripts/umnt.sh'
 
+# source bash rc
 alias abash='source ~/.bashrc'
 
+# mount encrypted drives on start
 $MHOME/utils/scripts/mmnt.sh

@@ -1,0 +1,80 @@
+# System-wide .bashrc file for interactive bash(1) shells.
+if [ -z "$PS1" ]; then
+   return
+fi
+
+alias ll="ls -la"
+
+export PS1=">> "
+
+export CLASSPATH=/Library/Java/Home:/Library/Java/Home/lib:/System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Classes/classes.jar:.
+
+export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.6/Home
+
+export OC4J_JAR=/Applications/JDeveloper.app/Contents/Resources/jdev/j2ee/home/oc4j.jar
+
+###oracle
+ORACLE_SID=ORACLE
+#export ORACLE_SID
+export PATH=$PATH:/Applications/JDeveloper.app/Contents/Resources/jdev/bin/:/opt/local/lib/:/opt/local/bin/
+DYLD_LIBRARY_PATH=/opt/oracle/instantclient:/opt/local/bin/
+export DYLD_LIBRARY_PATH
+
+TNS_ADMIN=/opt/oracle/tns
+export TNS_ADMIN
+
+ORACLE_HOME=/opt/oracle/instantclient
+export ORACLE_HOME
+
+SQLPATH=/opt/oracle/instantclient
+export SQLPATH
+
+SSL_PATH=/opt/local/var/macports/software/openssl/0.9.8i_0/opt/local/etc/openssl
+export SSL_PATH
+
+YASM_PATH=/opt/local/bin/yasm
+export YASM_PATH
+
+CVS_RSH=ssh
+export CVS_RSH
+
+CVSROOT=rfoster@192.168.0.130:/cvs
+export CVSROOT
+# Make bash check its window size after a process completes
+shopt -s checkwinsize
+
+#relocation etc...
+alias code="cd /Users/rfoster/Documents/Code/"
+
+#archive
+alias mtar='tar -czvf'
+alias utar='tar -xzvf'
+
+#search
+alias grip='grep -irl'
+alias nfind='find . -name'
+alias ifind='find . -iname'
+
+#apply changes to this file
+alias abash='source /etc/bashrc'
+
+alias tkdiff="/Applications/TkDiff.app/Contents/MacOS/Wish\ Shell"
+
+alias drm='rm -rf'
+
+alias dcp='cp -rf'
+
+alias ll='ls -la'
+
+#Metasploit
+alias msfcli='/Users/rfoster/Documents/Code/msf3/msfconsole'
+alias msfpl='/Users/rfoster/Documents/Code/msf3/msfpayload'
+
+#remote connections
+alias sshksu='ssh linux.cis.ksu.edu'
+
+#ksu
+alias ksu='cd /Users/rfoster/Documents/KSU'
+
+#cis 751
+alias 751='cd /Users/rfoster/Documents/KSU/CIS_751/'

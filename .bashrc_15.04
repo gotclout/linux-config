@@ -122,8 +122,11 @@ fi
 # ENV
 MHOME=/home/rfoster
 
-PATH=$PATH:$BOWER_HOME/bin:$MHOME/utils/scripts
 BOWER_HOME=$MHOME/utils/node_modules/bower
+PATH=$PATH:$BOWER_HOME/bin:$MHOME/utils/scripts
+#JAVA_HOME=
+#CLASSPATH=
+#GCC_PATH=
 
 LD_LIBRARY_PATH=/lib:/lib64:/usr/lib:/etc/libvirt:$BOWER_HOME/lib
 PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/lib/x86_64-linux-gnu
@@ -134,9 +137,12 @@ alias utar='tar -xzvf'
 
 alias drm='rm -rf'
 alias dcp='cp -rf'
+alias dev='pushd ~/Dev'
+alias pdf='gnome-open'
 
 alias grip='grep -irl'
 alias ifnd='find . -iname'
+alias nfnd='find . -name'
 alias utls='cd $MHOME/utils'
 alias fkill='kill -9'
 
@@ -144,9 +150,10 @@ alias vi='/usr/bin/vim'
 alias vmm='virt-manager'
 alias dif='tkdiff &' 
 alias python='python3.4'
+alias bower=''
 
 # launch crome from terminal ignore output
-alias chrome='/usr/bin/google-chrome-stable &>/dev/null'
+alias chrome='/usr/bin/google-chrome-stable &>/dev/null &'
 
 # permissions
 alias amsk='chmod 755 -R' # rx

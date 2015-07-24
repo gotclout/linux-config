@@ -122,8 +122,8 @@ fi
 # ENV
 MHOME=/home/rfoster
 
-BOWER_HOME=$MHOME/utils/node_modules/bower
-PATH=$PATH:$BOWER_HOME/bin:$MHOME/utils/scripts
+BOWER_HOME=$MHOME/Utils/node_modules/bower
+PATH=$PATH:$BOWER_HOME/bin:$MHOME/Utils/scripts
 #JAVA_HOME=
 #CLASSPATH=
 #GCC_PATH=
@@ -142,14 +142,14 @@ alias cllog='rm *.log'
 alias clean='rm *.o'
 
 alias dev='pushd ~/Dev'
-alias doc='pushd /home/rfoster/Documents'
+alias doc='pushd $MHOME/Documents'
 alias pdf='gnome-open'
-alias cvm='/home/rfoster/utils/scripts/clonevm.sh'
+alias cvm='$MHOME/Utils/scripts/clonevm.sh'
 
 alias grip='grep -irl'
 alias ifnd='find . -iname'
 alias nfnd='find . -name'
-alias utls='cd $MHOME/utils'
+alias utls='cd $MHOME/Utils'
 alias fkill='kill -9'
 alias mbash='gvim ~/.bashrc'
 
@@ -169,14 +169,14 @@ alias wmsk='chmod 766 -R' # rw
 alias rmsk='chmod 744 -R' # r
 
 # mount encrypted drives
-alias mmnt='$MHOME/utils/scripts/mmnt.sh'
-alias umnt='$MHOME/utils/scripts/umnt.sh'
+alias mmnt='$MHOME/Utils/scripts/mmnt.sh'
+alias umnt='$MHOME/Utils/scripts/umnt.sh'
 
 # source bash rc
-alias abash='source /home/rfoster/.bashrc'
+alias abash='source $MHOME/.bashrc'
 
 # change to root user
 alias sroot='sudo su - root'
 
 # mount encrypted drives on start
-$MHOME/utils/scripts/mmnt.sh
+$MHOME/Utils/scripts/mmnt.sh

@@ -137,20 +137,28 @@ alias utar='tar -xzvf'
 
 alias drm='rm -rf'
 alias dcp='cp -rf'
+
+alias cllog='rm *.log'
+alias clean='rm *.o'
+
 alias dev='pushd ~/Dev'
+alias doc='pushd /home/rfoster/Documents'
 alias pdf='gnome-open'
+alias cvm='/home/rfoster/utils/scripts/clonevm.sh'
 
 alias grip='grep -irl'
 alias ifnd='find . -iname'
 alias nfnd='find . -name'
 alias utls='cd $MHOME/utils'
 alias fkill='kill -9'
+alias mbash='gvim ~/.bashrc'
 
 alias vi='/usr/bin/vim'
 alias vmm='virt-manager'
-alias dif='tkdiff &' 
+alias dif='tkdiff'
 alias python='python3.4'
-alias bower=''
+# TODO: alias bower=''
+alias iconf='ifconfig | grep "inet addr:"'
 
 # launch crome from terminal ignore output
 alias chrome='/usr/bin/google-chrome-stable &>/dev/null &'
@@ -165,7 +173,10 @@ alias mmnt='$MHOME/utils/scripts/mmnt.sh'
 alias umnt='$MHOME/utils/scripts/umnt.sh'
 
 # source bash rc
-alias abash='source ~/.bashrc'
+alias abash='source /home/rfoster/.bashrc'
+
+# change to root user
+alias sroot='sudo su - root'
 
 # mount encrypted drives on start
 $MHOME/utils/scripts/mmnt.sh

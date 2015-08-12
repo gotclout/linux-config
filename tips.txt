@@ -1,0 +1,487 @@
+rm­-rf directory_name ­ removes non empty directories
+
+vim line numbering 
+
+:set number
+:set nonumber
+
+ld .o file linkerin vi­vim : set nu shw line numbers set nonumber du 
+sh (optional file/dir name) show disk usagecp ­rf directory copies non empty dir
+
+pwd print working directory
+
+scp ­r copy directories
+
+chmod ­r recurssive change files info
+
+export DYLD_LIBRARY_PATH=/Users/rfoster/Documents/CIS_764/instantclient_10_2 example export
+
+global path editing /etc/path
+
+global environment editing /etc/bashrc
+
+password protect directory make an .htaccess file AuthUserFile /your/directory/here/.htpasswdAuthGroupFile /dev/nullAuthName "Secure Document"AuthType Basic<LIMIT
+
+GET PUT POST>require user username</LIMIT>use htpasswd ­c .htpasswd username to set or change pwdchmod 755 .htpasswd .htaccess
+
+/Applications/Utilities/Terminal.app/Contents/MacOS/Terminal &
+
+sqlplus rfoster/cis764@//oracle.cis.ksu.edu:1521/ORACLE @/Users/rfoster/Documents/CIS_764/introduction/loadpo.sql
+
+sqlplus rfoster/cis764@//oracle.cis.ksu.edu:1521/ORACLE @/Users/rfoster/Documents/CIS_764/introduction/poexample.sql
+
+defaults write com.apple.Finder AppleShowAllFiles YES show hidden files
+
+1.extension gz
+
+#gunzip file.gz
+
+2.extension tar.gz/.tgz
+
+#tar xvzf file.tar.gz
+
+or #gzip ­dc file.tar.gz | tar xvf ­
+
+Build the cjpeg download a new version and copy it to ...
+
+_opt_local_var_macports_sources_rsync.macports.org_release_ports_graphics_jpeg/work/
+
+also you need to make this directory mkdir ­p
+
+/opt/local/var/macports/build/_opt_local_var_macports_sources_rsync.macports.org_release_ports_graphics_jpeg/work/destroot/opt/local/man/man1/
+
+configure: error: IJG JPEG library not found at /opt/local/lib
+
+vi commands
+
+paste
+
+p put (paste) the line(s) in the buffer into the text after the current line
+
+delete
+
+delete the remainder of the line, starting with current cursor position
+
+* dd delete entire current line
+
+cut
+
+yy copy (yank, cut) the current line into the buffer
+
+Nyy or yNy copy (yank, cut) the next N lines, including the current line, into the buffer
+
+move cursor
+
+0 beginning of line $ end of line
+
+:n<Return> or nG move cursor to line n
+
+:$<Return> or G move cursor to last line in file
+
+w move cursor to beginning of next word
+
+b move cursor back to beginning of preceding word
+
+undo
+
+*u
+
+source /projects/sourceMe_4_GCC­3.2.2
+
+setenv DISPLAY 192.168.101.12:0.0
+
+find ­depth ­maxdepth 100 ­name wsdl
+
+find . ­name "*.idl"
+
+grep msgTable *.java
+
+find string in files of type .py
+grep -rl "Domain is" . | grep "\.py"
+
+makefile .cc
+
+#
+
+all: pistest
+
+pistest: pointInShape.o pistest.o
+
+g++ pointInShape.o pistest.o ­o pistest
+
+pointInShape.o: pointInShape.cc
+
+g++ ­c pointInShape.cc
+
+pistest.o: pistest.cc
+
+gcc ­c pistest.cc
+
+clean:
+
+rm ­rf *.o
+
+http://www.devdaily.com/blog/post/linux­unix/how­work­files­tar­gzip­tgz
+
+tar czvf LiaisonTemp.tgz LiaisonTemp/
+
+tar ­xzvf LiaisonTemp.tgz
+
+gunzip *.gz
+
+alias ll='ls –la
+
+find replace
+
+awk '{gsub(/createElementNSNS/,"CreateElementNS");print}' DomTest.java
+
+find replace
+
+awk '{gsub(/null/,"NULL");print}' DomTest.java
+
+in place awk
+
+awk '{gsub(/ESURL/,"http://192.168.122.170:9200");print}' scripts/configuration/stormchaser.json > tmp && mv tmp scripts/configuration/stormchaser.json
+
+sed ­i 's/kaga­5/kaga­2/g' ./*.lua
+
+The sed version replaces in place
+
+open port
+
+iptables ­A INPUT ­i eth0 ­p tcp ­­sport 443 ­m state ­­state ESTABLISHED ­j ACCEPT
+
+
+tar –czvf dir.tgz dir
+
+tar –xzvf file.tgz
+
+g++ static lib
+
+g++ ­Wall ­c OnMessage.cpp
+
+ar ­cvq OnMessage.a OnMessage.o
+
+shared lib
+
+g++ ­Wall ­fPIC ­c LMsgSubscription.cpp ­I $JAVA_HOME/include ­I $JAVA_HOME/include/linux
+
+g++ ­shared ­Wl ­o libomlib.so LMsgSubscription.o
+
+g++ OnMessage.cpp ­I $JAVA_HOME/include ­I $JAVA_HOME/include/linux ­L /opt/jdk1.6.0_12/jre/lib/i386/server –ljvm
+
+jar ­cvfm module_name.jar META­INF/MANIFEST.MF *
+
+jar –tf xxx.jar
+
+If you want to search an entire file, you can use % to indicate that as the range:
+
+:%s/search/replace/gc
+
+The c is optional confirm
+
+dos2unix
+
+pdf2ps
+
+­o for object
+
+­g for debug symbols
+
+g++ ­g –o exeq exeq.cpp
+
+xpdf file.pf
+
+1 + 1 | bc
+
+Word count in a file or vi
+
+w wc!
+
+Count num occurrences of pattern %s/pattern//gn
+
+Useful alias
+
+alias ctar tar –czvf
+
+alias xtar tar –xzvf
+
+list files by user name redirect to file
+
+ls /tmp ­lhR | grep rfoster > m.out
+
+long listing of files in the current directory whose name contain .log
+
+ll `find . ­name "*.log"`
+
+report file system disk space usage
+
+df
+
+disk usage in bytes sorted numerically
+
+du ­b | sort –n
+
+du ­skh * | sort ­n
+
+backup script
+
+github script
+
+change user password
+
+passwd
+
+env | grep SHELL or
+
+echo $SHELL
+
+view the current shell
+
+list shells
+
+chsh ­l
+
+change shell
+
+chsh ­s /bin/bash
+
+ssh no password
+
+from remote machine
+
+ssh­keygen ­t dsa
+
+no name or passphrase
+
+copy to destination machine
+
+scp rfoster@192.168.101.105:/home/rfoster/.ssh/id_dsa.pub rfoster.kaga­5.pub
+
+append to authorized_keys2
+
+cat rfoster.kaga­5.pub > authorized_keys2
+
+you need the .ssh dir in your home location
+
+should have
+
+­rw­­­­­­­. 1 rfoster users 668 2011­05­12 12:06 id_dsa
+
+­rw­r­­r­­. 1 rfoster users 604 2011­05­12 12:06 id_dsa.pub
+
+­rw­r­­r­­. 1 rfoster users 634 2011­05­12 09:15 known_hosts
+
+g++ ­Wall ­Wextra
+
+nm filename | less to view compiled class symbols
+
+To view processes
+
+top
+
+ps
+
+ps –a
+
+Create vim script file
+
+vim ­w indentme.scr foo.c
+
+execute vim commands
+
+apply to file
+
+vim ­s indentme.scr ~/RR_TS_xmiparser.xml
+
+to get unique grep results
+
+remove line numbers by setting options then pipe to sort and pipe to unique
+
+export GREP_OPTIONS=
+
+grep needle haystack | sort | uniq
+
+Git
+
+diff against revision #
+
+git diff @{1} ./cmr.owl
+
+against head
+
+git diff HEAD ./cmr.owl
+
+show revision history
+
+git ­­log cmr.owl
+
+commit with added files
+
+git commit –a
+
+add files to repo
+
+git add cmr.owl
+
+git config --global url."https://".insteadOf git://
+
+add desktop icon and exec
+modify .desktop
+ ~/Desktop/.desktop
+
+add user with root access
+ adduser rfoster -G root
+ sudo passwd rfoster
+ rpm -ivh {rpm-file}
+
+visudo add line with root but replace with username
+
+change owner recurssive
+ chown rfoster. -R ./
+
+remove trailing whilte space vim
+:%s/\s\+$//
+
+remove leading white space vim
+:%s/\s\+$
+
+ssh-keygen -t rsa -C "rfoster@cyberpointllc.com"
+cat ~/.ssh/id_rsa.pub
+ssh-add ~/.ssh/id_rsa
+
+add ssh id to host login no pwd prompts
+ssh-copy-id 192.168.122.183
+
+CP Git
+create init
+ ~/.artifactory_credentials
+   1 rfoster:{DESede}txFBcNuUhrrhpXEYGyzMhw==
+ ~/.artifactory_info
+   1 https://jenkins.whitehall.cyberpointllc.com/artifactory
+     2 repo
+
+grotesquestorm
+
+make develop
+make clean all
+
+ubuntu
+pdf open from terminal
+gnome-open name.pdf
+
+centos enable networking
+vi /etc/sysconfig/network-scripts/ifcfg-eth0
+ONBOOT=yes
+reboot
+
+ctrl alt get cursor from vmm
+
+shutdown in 0 seconds
+sudo shutdown 0
+
+apt get issues modify trusty edit
+/etc/apt/sources.list
+
+top sort by mem desc
+top -o %MEM
+
+rfoster to root
+sudo su - root
+
+vmm clone
+sudo virt-clone --force --connect qemu:///system --original cent1 --name cent1c2 --file cent1c2.img
+
+convert from raw to qcow2
+sudo qemu-img convert -f raw cent1c.img -O qcow2 cent1c.qcow2
+sudo virsh start cent1
+sudo virsh suspend cent1
+sudo virsh destroy
+sudo virsh undefine
+sudo virsh list --all
+sudo virsh list --all --with-snapshot
+
+virsh snapshot-revert domain status (--running --paused)
+
+virsh pools
+virsh pool-list --all
+
+create pool
+sudo virsh pool-create-as --name VM --type dir --target /home/rfoster/manual
+
+destroy pool
+virsh pool-destroy grotesquestorm-1.3.0
+
+virsh pool-undefine grotesquestorm-1.3.0
+
+clone vm -- clone created in working directory if pool exists
+sudo virt-clone --force --connect qemu:///system --original cent1 --name cent1c --file cent1c.img
+
+add key to host
+ssh-copy-id 
+
+symbolic link
+ls -s existing file link file
+rm link file
+unlink link file
+
+list open ports
+nmap -sT -O localhost
+
+info for ip/port request
+curl ip:port
+
+git commit -m"Fix typo in introduction to user guide"
+
+git clone 127.0.0.1:grotesquestorm/grotesquestorm.git
+ip for url 
+nslookup www.ex.com
+
+file-roller target
+
+git push -u origin exif
+git gui&
+gitk &
+
+git branch -D rfoster-exif
+git commit -m "Comments"
+git commit --all
+git add simple_waves.jpg
+git checkout scripts/configuration/stormchaser.json
+git diff scripts/configuration/stormchaser.json
+git status
+git pull --rebase
+
+sudo apt-get install openssh -server
+
+list ports open active etc..
+iptables -L
+
+multiline bash comment
+: <<'disable'
+
+for i in a b c d e f  ; do sudo kill -a 111 ; done
+exit 0
+
+disable
+
+reverse history
+ctrl +r command
+
+add command to reverse history by name
+
+grep -ril "hello" ./ # findhello
+
+tmux
+sudo apt-get install tmux
+tmux os
+tmux ls
+tmux a -t0
+tmux a
+  ctrl+b ?  H
+  ctrl+b %  S
+         "  S
+       esc 1-5 layout
+tmux ls
+tmux a -t0 a attach t# session
+

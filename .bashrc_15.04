@@ -19,6 +19,18 @@ shopt -s histappend
 HISTSIZE=1000
 HISTFILESIZE=2000
 
+# formate date time
+export HISTTIMEFORMAT="%m:%d:20%y:%T "
+
+# grep options
+export GREP_OPTIONS='--color=auto' GREP_COLOR='50;1'
+if grep --help | grep -- --exclude-dir &>/dev/null; then
+  for pattern in .cvs .git .hg .svn; do
+    GREP_OPTIONS="$GREP_OPTIONS --exclude-dir=$pattern"
+  done
+fi
+export GREP_OPTIONS
+
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
@@ -57,23 +69,25 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+#    PS1='[${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$]\n>> '
+    PS1='[${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u \w\[\033[00m\]]\$\n>> '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    PS1='[${debian_chroot:+($debian_chroot)}\u \w]\$\n>> '
+    #PS1='[${debian_chroot:+($debian_chroot)}\u@\h:\w\$:]\n>> '
 fi
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u \w\a\]$PS1"
     ;;
 *)
     ;;
 esac
 
 # reset
-PS1='${debian_chroot:+($debian_chroot)}\u >> '
+#PS1='${debian_chroot:+($debian_chroot)}\u >> '
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -124,8 +138,8 @@ MHOME=/home/rfoster
 
 BOWER_HOME=$MHOME/Utils/node_modules/bower
 PATH=$PATH:$BOWER_HOME/bin:$MHOME/Utils/scripts
-#JAVA_HOME=
-#CLASSPATH=
+JAVA_HOME=/usr/bin
+CLASSPATH=.
 #GCC_PATH=
 
 LD_LIBRARY_PATH=/lib:/lib64:/usr/lib:/etc/libvirt:$BOWER_HOME/lib
@@ -141,12 +155,18 @@ alias dcp='cp -rf'
 alias cllog='rm *.log'
 alias clean='rm *.o'
 
-alias dev='pushd ~/Dev'
+alias dev='pushd $MHOME/Dev'
+alias gts='pushd $MHOME/Dev/grotesquestorm'
+alias gum='pushd $MHOME/Dev/gumball'
+alias exs='pushd $MHOME/Dev/examplesensor'
+alias fatpd='pushd $MHOME/Dev/purpledinosaur-fat'
 alias doc='pushd $MHOME/Documents'
 alias pdf='gnome-open'
 alias cvm='$MHOME/Utils/scripts/clonevm.sh'
 
+# search
 alias grip='grep -irl'
+alias ngrep='grep -irn'
 alias ifnd='find . -iname'
 alias nfnd='find . -name'
 alias utls='cd $MHOME/Utils'
@@ -155,13 +175,27 @@ alias mbash='gvim ~/.bashrc'
 
 alias vi='/usr/bin/vim'
 alias vmm='virt-manager'
+alias vms='sudo virsh start'
+
+alias vmsa='for hn in A B C D E F G H ; do sudo virsh start Cent6$hn ; done'
+
+alias vmk='sudo virsh shutdown'
 alias dif='tkdiff'
 alias python='python3.4'
 # TODO: alias bower=''
 alias iconf='ifconfig | grep "inet addr:"'
 
+# git TODO
+export GIT_HOME=10.2.98.44
+alias gclone="git clone git@$GIT_HOME:"
+alias gitpb='git push -u origin'
+alias gitgui='git gui&'
+alias gitk='gitk &'
+alias gitka='gitk --a &'
+alias gitkh='gitk cmommit history &'
+
 # launch crome from terminal ignore output
-alias chrome='/usr/bin/google-chrome-stable &>/dev/null &'
+alias chrome='/usr/bin/google-chrome-beta &>/dev/null &'
 
 # permissions
 alias amsk='chmod 755 -R' # rx
@@ -172,11 +206,40 @@ alias rmsk='chmod 744 -R' # r
 alias mmnt='$MHOME/Utils/scripts/mmnt.sh'
 alias umnt='$MHOME/Utils/scripts/umnt.sh'
 
-# source bash rc
-alias abash='source $MHOME/.bashrc'
+# source bash rc and updatedb for mlocate
+alias abash='source $MHOME/.bashrc; sudo updatedb'
+alias udb='sudo updatedb'
 
 # change to root user
 alias sroot='sudo su - root'
 
 # mount encrypted drives on start
 $MHOME/Utils/scripts/mmnt.sh
+
+# ssh
+alias sci='ssh-copy-id'
+
+# TODO map mac addr to ip via virtsetup
+# Then gen aliases for for hn in A B C D E F G H ; do alias sshc$hn='
+alias sshca='ssh root@192.168.122.228'
+alias sshcb='ssh root@192.168.122.202'
+alias sshcc='ssh root@192.168.122.81'
+alias sshcd='ssh root@192.168.122.185'
+alias sshce='ssh root@192.168.122.203'
+alias sshcf='ssh root@192.168.122.211'
+alias sshcg='ssh root@192.168.122.212'
+alias sshch='ssh root@192.168.122.154'
+alias sshcbase='ssh root@192.168.122.216'
+
+# make
+alias amake='make clean; make develop; make all; make jenkins'
+alias etlmake='make clean-cache; make etl_node'
+alias remake='make clean; make all; make jenkins'
+alias tmake='make all; make jenkins && sh install.sh'
+
+alias vmrvt='for hn in A B C D E F G H ; do sudo virsh snapshot-revert --domain Cent6$hn ssvm; done'
+
+alias vmka='for hn in A B C D E F G H ; do sudo virsh shutdown Cent6$hn; done'
+
+#gitk --a #all branch history
+#gitk commit history

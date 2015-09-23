@@ -70,9 +70,9 @@ fi
 
 if [ "$color_prompt" = yes ]; then
 #    PS1='[${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$]\n>> '
-    PS1='[${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u \w\[\033[00m\]]\$\n>> '
+    PS1='[${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u \w\[\033[00m\]]\n>> '
 else
-    PS1='[${debian_chroot:+($debian_chroot)}\u \w]\$\n>> '
+    PS1='[${debian_chroot:+($debian_chroot)}\u \w]\n>> '
     #PS1='[${debian_chroot:+($debian_chroot)}\u@\h:\w\$:]\n>> '
 fi
 unset color_prompt force_color_prompt
@@ -235,7 +235,7 @@ alias sshcbase='ssh root@192.168.122.216'
 alias amake='make clean; make develop; make all; make jenkins'
 alias etlmake='make clean-cache; make etl_node'
 alias remake='make clean; make all; make jenkins'
-alias tmake='make all; make jenkins && sh install.sh'
+alias tmake='make clean; make jenkins && sh install.sh'
 
 alias vmrvt='for hn in A B C D E F G H ; do sudo virsh snapshot-revert --domain Cent6$hn ssvm; done'
 

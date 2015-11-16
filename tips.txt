@@ -3,7 +3,9 @@ rm­-rf directory_name ­ removes non empty directories
 vim line numbering 
 
 :set number
+:set nu
 :set nonumber
+:set nonu
 
 ld .o file linkerin vi­vim : set nu shw line numbers set nonumber du 
 sh (optional file/dir name) show disk usagecp ­rf directory copies non empty dir
@@ -143,7 +145,7 @@ in place awk
 
 awk '{gsub(/ESURL/,"http://192.168.122.170:9200");print}' scripts/configuration/stormchaser.json > tmp && mv tmp scripts/configuration/stormchaser.json
 
-sed ­i 's/kaga­5/kaga­2/g' ./*.lua
+sed ­-i 's/kaga­5/kaga­2/g' ./*.lua
 
 The sed version replaces in place
 
@@ -326,6 +328,7 @@ git add cmr.owl
 
 git config --global url."https://".insteadOf git://
 
+
 add desktop icon and exec
 modify .desktop
  ~/Desktop/.desktop
@@ -427,6 +430,7 @@ unlink link file
 
 list open ports
 nmap -sT -O localhost
+netstat -e -l 
 
 info for ip/port request
 curl ip:port
@@ -443,7 +447,13 @@ git push -u origin exif
 git gui&
 gitk &
 
+
 git branch -D rfoster-exif
+# Delete a branch irrespective of its merged status.
+git branch rfoster_etl_node_manager
+# create this branch
+git branch -f rfoster_etl_node_manager 
+# force create this branch
 git commit -m "Comments"
 git commit --all
 git add simple_waves.jpg
@@ -451,6 +461,7 @@ git checkout scripts/configuration/stormchaser.json
 git diff scripts/configuration/stormchaser.json
 git status
 git pull --rebase
+git fetch
 
 sudo apt-get install openssh -server
 
@@ -478,10 +489,17 @@ tmux os
 tmux ls
 tmux a -t0
 tmux a
-  ctrl+b ?  H
+  ctrl+b ?  H help
   ctrl+b %  S
          "  S
        esc 1-5 layout
 tmux ls
 tmux a -t0 a attach t# session
+script --start transcript
+exit   --end transcript
 
+lokkit -p 8181:tcp
+lokkit -p 8080:tcp
+
+post via curl
+curl -X POST 192.168.122.20:8181/controller/configure

@@ -156,13 +156,17 @@ alias cllog='rm *.log'
 alias clean='rm *.o'
 
 alias dev='pushd $MHOME/Dev'
-alias gts='pushd $MHOME/Dev/grotesquestorm'
+alias gts='pushd $MHOME/src/grotesquestorm'
 alias gum='pushd $MHOME/Dev/gumball'
 alias exs='pushd $MHOME/Dev/examplesensor'
 alias fatpd='pushd $MHOME/Dev/purpledinosaur-fat'
+alias scripts='pushd $MHOME/Utils/scripts'
 alias doc='pushd $MHOME/Documents'
 alias pdf='gnome-open'
 alias cvm='$MHOME/Utils/scripts/clonevm.sh'
+alias gti='$MHOME/Utils/scripts/gtinstall.sh'
+alias eni='$MHOME/Utils/scripts/etlinstall.sh'
+alias pdi='$MHOME/Utils/scripts/pdinstall.sh'
 
 # search
 alias grip='grep -irl'
@@ -171,7 +175,10 @@ alias ifnd='find . -iname'
 alias nfnd='find . -name'
 alias utls='cd $MHOME/Utils'
 alias fkill='kill -9'
+
+# open files
 alias mbash='gvim ~/.bashrc'
+alias tip='vim ~/Documents/text/linuxtips.txt'
 
 alias vi='/usr/bin/vim'
 alias vmm='virt-manager'
@@ -180,7 +187,7 @@ alias vms='sudo virsh start'
 alias vmsa='for hn in A B C D E F G H ; do sudo virsh start Cent6$hn ; done'
 
 alias vmk='sudo virsh shutdown'
-alias dif='tkdiff'
+alias diff='tkdiff'
 alias python='python3.4'
 # TODO: alias bower=''
 alias iconf='ifconfig | grep "inet addr:"'
@@ -193,14 +200,17 @@ alias gitgui='git gui&'
 alias gitk='gitk &'
 alias gitka='gitk --a &'
 alias gitkh='gitk cmommit history &'
+alias gitdiff='git difftool -y'
 
 # launch crome from terminal ignore output
-alias chrome='/usr/bin/google-chrome-beta &>/dev/null &'
+#alias chrome='/usr/bin/google-chrome-beta &>/dev/null &'
+alias chrome='google-chrome-stable'
 
 # permissions
 alias amsk='chmod 755 -R' # rx
 alias wmsk='chmod 766 -R' # rw
 alias rmsk='chmod 744 -R' # r
+alias fmsk='chmod 644 -R'
 
 # mount encrypted drives
 alias mmnt='$MHOME/Utils/scripts/mmnt.sh'
@@ -221,21 +231,21 @@ alias sci='ssh-copy-id'
 
 # TODO map mac addr to ip via virtsetup
 # Then gen aliases for for hn in A B C D E F G H ; do alias sshc$hn='
-alias sshca='ssh root@192.168.122.228'
-alias sshcb='ssh root@192.168.122.202'
-alias sshcc='ssh root@192.168.122.81'
-alias sshcd='ssh root@192.168.122.185'
-alias sshce='ssh root@192.168.122.203'
-alias sshcf='ssh root@192.168.122.211'
-alias sshcg='ssh root@192.168.122.212'
-alias sshch='ssh root@192.168.122.154'
-alias sshcbase='ssh root@192.168.122.216'
+alias sshca='ssh root@192.168.122.20'
+alias sshcb='ssh root@192.168.122.21'
+alias sshcc='ssh root@192.168.122.22'
+alias sshcd='ssh root@192.168.122.23'
+alias sshce='ssh root@192.168.122.24'
+alias sshcf='ssh root@192.168.122.25'
+alias sshcg='ssh root@192.168.122.26'
+alias sshch='ssh root@192.168.122.27'
+#alias sshcbase='ssh root@192.168.122.216'
 
 # make
 alias amake='make clean; make develop; make all; make jenkins'
 alias etlmake='make clean-cache; make etl_node'
 alias remake='make clean; make all; make jenkins'
-alias tmake='make clean; make jenkins && sh install.sh'
+alias tmake='make clean; make jenkins && gti'
 
 alias vmrvt='for hn in A B C D E F G H ; do sudo virsh snapshot-revert --domain Cent6$hn ssvm; done'
 

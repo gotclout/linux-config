@@ -82,3 +82,5 @@ source meta-rdk/setup-environment
 (select option 11?)
 bitbake comcast-mediaclient-vbn-image
 tail -f /home/stbadmin1/home/stbadmin/pacexid/build-pacexid/tmp/log/cooker/pacexid/*.log
+
+

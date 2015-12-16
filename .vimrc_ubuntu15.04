@@ -1,218 +1,422 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Maintainer:
+"       Amir Salihefendic
+"       http://amix.dk - amix@amix.dk
+"
+" Version:
+"       5.0 - 29/05/12 15:43:36
+"
+" Blog_post:
+"       http://amix.dk/blog/post/19691#The-ultimate-Vim-configuration-on-Github
+"
+" Awesome_version:
+"       Get this config, nice color schemes and lots of plugins!
+"
+"       Install the awesome version from:
+"
+"           https://github.com/amix/vimrc
+"
+" Syntax_highlighted:
+"       http://amix.dk/vim/vimrc.html
+"
+" Raw_version:
+"       http://amix.dk/vim/vimrc.txt
+"
+" Sections:
+"    -> General
+"    -> VIM user interface
+"    -> Colors and Fonts
+"    -> Files and backups
+"    -> Text, tab and indent related
+"    -> Visual mode related
+"    -> Moving around, tabs and buffers
+"    -> Status line
+"    -> Editing mappings
+"    -> vimgrep searching and cope displaying
+"    -> Spell checking
+"    -> Misc
+"    -> Helper functions
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-# If not running interactively, don't do anything
-case $- in
-    *i*) ;;
-      *) return;;
-esac
 
-# don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
-HISTCONTROL=ignoreboth
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => General
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Sets how many lines of history VIM has to remember
+set history=700
 
-# append to the history file, don't overwrite it
-shopt -s histappend
+" Enable filetype plugins
+filetype plugin on
+filetype indent on
 
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+au FileType python setl sw=2 sts=2 et ai si
 
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
-shopt -s checkwinsize
+" Set to auto read when a file is changed from the outside
+set autoread
 
-# If set, the pattern "**" used in a pathname expansion context will
-# match all files and zero or more directories and subdirectories.
-#shopt -s globstar
+" With a map leader it's possible to do extra key combinations
+" like <leader>w saves the current file
+let mapleader = ","
+let g:mapleader = ","
 
-# make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+" Fast saving
+nmap <leader>w :w!<cr>
 
-# set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
-fi
 
-# set a fancy prompt (non-color, unless we know we "want" color)
-case "$TERM" in
-    xterm-color) color_prompt=yes;;
-esac
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => VIM user interface
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Set 7 lines to the cursor - when moving vertically using j/k
+set so=7
 
-# uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
-#force_color_prompt=yes
+" Turn on the WiLd menu
+set wildmenu
 
-if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
-    else
-	color_prompt=
-    fi
-fi
+" Ignore compiled files
+set wildignore=*.o,*~,*.pyc
 
-if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-fi
-unset color_prompt force_color_prompt
+"Always show current position
+set ruler
 
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
+" Height of the command bar
+set cmdheight=2
 
-# reset
-PS1='${debian_chroot:+($debian_chroot)}\u >> '
+" A buffer becomes hidden when it is abandoned
+set hid
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
+" Configure backspace so it acts as it should act
+set backspace=eol,start,indent
+set whichwrap+=<,>,h,l
 
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
+" Ignore case when searching
+set ignorecase
 
-# colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+" When searching try to be smart about cases
+set smartcase
 
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+" Highlight search results
+set hlsearch
 
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+" Makes search act like search in modern browsers
+set incsearch
 
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+" Don't redraw while executing macros (good performance config)
+set lazyredraw
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
+" For regular expressions turn magic on
+set magic
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
-fi
+" Show matching brackets when text indicator is over them
+set showmatch
+" How many tenths of a second to blink when matching brackets
+set mat=2
 
-# ENV
-MHOME=/home/rfoster
+" Display line numbers on the left TODO: by file type
+set number
 
-BOWER_HOME=$MHOME/Utils/node_modules/bower
-PATH=$PATH:$BOWER_HOME/bin:$MHOME/Utils/scripts
-#JAVA_HOME=
-#CLASSPATH=
-#GCC_PATH=
+" No annoying sound on errors
+set noerrorbells
+set novisualbell
+set t_vb=
+set tm=500
 
-LD_LIBRARY_PATH=/lib:/lib64:/usr/lib:/etc/libvirt:$BOWER_HOME/lib
-PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/lib/x86_64-linux-gnu
 
-# shortcuts
-alias mtar='tar -czvf'
-alias utar='tar -xzvf'
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Colors and Fonts
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Enable syntax highlighting
+syntax enable
 
-alias drm='rm -rf'
-alias dcp='cp -rf'
+"set background=dark
 
-alias cllog='rm *.log'
-alias clean='rm *.o'
+" Set extra options when running in GUI mode
+if has("gui_running")
+    set guioptions-=T
+    set guioptions+=e
+    set t_Co=256
+    set guitablabel=%M\ %t
+endif
 
-alias dev='pushd $MHOME/Dev'
-alias gts='pushd $MHOME/Dev/grotesquestorm'
-alias doc='pushd $MHOME/Documents'
-alias pdf='gnome-open'
-alias cvm='$MHOME/Utils/scripts/clonevm.sh'
+" Set utf8 as standard encoding and en_US as the standard language
+set encoding=utf8
 
-# search
-alias grip='grep -irl'
-alias ifnd='find . -iname'
-alias nfnd='find . -name'
-alias utls='cd $MHOME/Utils'
-alias fkill='kill -9'
-alias mbash='gvim ~/.bashrc'
+" Use Unix as the standard file type
+set ffs=unix,dos,mac
 
-alias vi='/usr/bin/vim'
-alias vmm='virt-manager'
-alias vms='sudo virsh start'
+set t_Co=256
+colorscheme jellybeans
+hi Normal ctermbg=none
 
-alias vmsa='for hn in A B C D E F G H ; do sudo virsh start Cent6$hn ; done'
+" Set the line number color
+"hi LineNr ctermfg=blue ctermbg=none
+"  ctermbg=white
 
-alias vmk='sudo virsh shutdown'
-alias dif='tkdiff'
-alias python='python3.4'
-# TODO: alias bower=''
-alias iconf='ifconfig | grep "inet addr:"'
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Files, backups and undo
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Turn backup off, since most stuff is in SVN, git et.c anyway...
+set nobackup
+set nowb
+set noswapfile
 
-# git TODO
-export GIT_HOME=10.2.98.44
-alias gclone="git clone"
-alias gitpb='git push -u origin'
-alias gitgui='git gui&'
-alias gitk='gitk &'
 
-# launch crome from terminal ignore output
-alias chrome='/usr/bin/google-chrome-beta &>/dev/null &'
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Text, tab and indent related
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Use spaces instead of tabs
+set expandtab
 
-# permissions
-alias amsk='chmod 755 -R' # rx
-alias wmsk='chmod 766 -R' # rw
-alias rmsk='chmod 744 -R' # r
+" Be smart when using tabs ;)
+set smarttab
 
-# mount encrypted drives
-alias mmnt='$MHOME/Utils/scripts/mmnt.sh'
-alias umnt='$MHOME/Utils/scripts/umnt.sh'
+" a combination of spaces and tabs are used to simulate tab stops at a width
+" other than the (hard) tabstop
+" set softtabstop=2
 
-# source bash rc and updatedb for mlocate
-alias abash='source $MHOME/.bashrc; sudo updatedb'
+" 1 tab == 2 spaces
+set shiftwidth=2
+set tabstop=2
 
-# change to root user
-alias sroot='sudo su - root'
+" Linebreak on 500 characters
+set lbr
+set tw=500
 
-# mount encrypted drives on start
-$MHOME/Utils/scripts/mmnt.sh
+set ai "Auto indent
+set si "Smart indent
+set wrap "Wrap lines
 
-# ssh
-alias sci='ssh-copy-id'
-alias sshca='ssh root@192.168.122.228'
-alias sshcb='ssh root@192.168.122.202'
-alias sshcc='ssh root@192.168.122.81'
+"highlight ExtraWhitespace ctermbg=none guibg=none
+"match ExtraWhitespace /\s\+$/
+"set lcs+=nbsp:0xb7  " Middle dot for non-breaking spaces
+"set lcs+=trail:.M     " Middle dot for trailing spaces
+"syn match WhiteSpace / / containedin=ALL conceal cchar=Æ
+"setl conceallevel=2 concealcursor=nv
+"autocmd VimEnter * :syn match space /\s/
+"autocmd VimEnter * :hi space ctermbg=gray ctermfg=black guibg=lightgray guifg=black
+"set list
+"set listchars=trail:.
+set list listchars=tab:\|_,trail:·
 
-# make
-alias amake='make clean; make develop; make all; make jenkins'
-alias etlmake='make clean-cache; make etl_node'
-alias remake='make clean; make all; make jenkins'
-alias tmake='make all; make jenkins && sh install.sh'
+""""""""""""""""""""""""""""""
+" => Visual mode related
+""""""""""""""""""""""""""""""
+" Visual mode pressing * or # searches for the current selection
+" Super useful! From an idea by Michael Naumann
+vnoremap <silent> * :call VisualSelection('f')<CR>
+vnoremap <silent> # :call VisualSelection('b')<CR>
 
-alias vmrvt='for hn in A B C D E F G H ; do sudo virsh snapshot-revert --domain Cent6$hn ssvm; done'
 
-#alias vmrvt='virsh snapshot-revert --domain Cent6A ssvm; virsh snapshot-revert --domain Cent6B ssvm; virsh snapshot-revert --domain Cent6B ssvm; virsh snapshot-revert --domain Cent6C ssvm; virsh snapshot-revert --domain Cent6D ssvm; virsh snapshot-revert --domain Cent6E ssvm; virsh snapshot-revert --domain Cent6F ssvm; virsh snapshot-revert --domain Cent6G ssvm; virsh snapshot-revert --domain Cent6H ssvm;'
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Moving around, tabs, windows and buffers
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Treat long lines as break lines (useful when moving around in them)
+map j gj
+map k gk
 
-alias vmka='for hn in A B C D E F G H ; do sudo virsh shutdown Cent6$hn; done'
-#alias vmka='sudo virsh shutdown Cent6A; sudo virsh shutdown Cent6B; sudo virsh shutdown Cent6C'
+" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
+map <space> /
+map <c-space> ?
 
-#gitk --a #all branch history
-#gitk commit history
+" Disable highlight when <leader><cr> is pressed
+map <silent> <leader><cr> :noh<cr>
+
+" Smart way to move between windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+" Close the current buffer
+map <leader>bd :Bclose<cr>
+
+" Close all the buffers
+map <leader>ba :1,1000 bd!<cr>
+
+" Useful mappings for managing tabs
+map <leader>tn :tabnew<cr>
+map <leader>to :tabonly<cr>
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove
+
+" Opens a new tab with the current buffer's path
+" Super useful when editing files in the same directory
+map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+
+" Switch CWD to the directory of the open buffer
+map <leader>cd :cd %:p:h<cr>:pwd<cr>
+
+" Specify the behavior when switching between buffers
+try
+  set switchbuf=useopen,usetab,newtab
+  set stal=2
+catch
+endtry
+
+" Return to last edit position when opening files (You want this!)
+autocmd BufReadPost *
+     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+     \   exe "normal! g`\"" |
+     \ endif
+" Remember info about open buffers on close
+set viminfo^=%
+
+
+""""""""""""""""""""""""""""""
+" => Status line
+""""""""""""""""""""""""""""""
+" Always show the status line
+set laststatus=2
+
+" Format the status line
+set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+set statusline+=\ Col:\ %c
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Editing mappings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Remap VIM 0 to first non-blank character
+map 0 ^
+
+" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
+nmap <M-j> mz:m+<cr>`z
+nmap <M-k> mz:m-2<cr>`z
+vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+
+if has("mac") || has("macunix")
+  nmap <D-j> <M-j>
+  nmap <D-k> <M-k>
+  vmap <D-j> <M-j>
+  vmap <D-k> <M-k>
+endif
+
+" Delete trailing white space on save, useful for Python and CoffeeScript ;)
+func! DeleteTrailingWS()
+  exe "normal mz"
+  %s/\s\+$//ge
+  exe "normal `z"
+endfunc
+autocmd BufWrite *.py :call DeleteTrailingWS()
+autocmd BufWrite *.coffee :call DeleteTrailingWS()
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vimgrep searching and cope displaying
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" When you press gv you vimgrep after the selected text
+vnoremap <silent> gv :call VisualSelection('gv')<CR>
+
+" Open vimgrep and put the cursor in the right position
+map <leader>g :vimgrep // **/*.<left><left><left><left><left><left><left>
+
+" Vimgreps in the current file
+map <leader><space> :vimgrep // <C-R>%<C-A><right><right><right><right><right><right><right><right><right>
+
+" When you press <leader>r you can search and replace the selected text
+vnoremap <silent> <leader>r :call VisualSelection('replace')<CR>
+
+" Do :help cope if you are unsure what cope is. It's super useful!
+"
+" When you search with vimgrep, display your results in cope by doing:
+"   <leader>cc
+"
+" To go to the next search result do:
+"   <leader>n
+"
+" To go to the previous search results do:
+"   <leader>p
+"
+map <leader>cc :botright cope<cr>
+map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
+map <leader>n :cn<cr>
+map <leader>p :cp<cr>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Spell checking
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Pressing ,ss will toggle and untoggle spell checking
+map <leader>ss :setlocal spell!<cr>
+
+" Shortcuts using <leader>
+map <leader>sn ]s
+map <leader>sp [s
+map <leader>sa zg
+map <leader>s? z=
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Misc
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Remove the Windows ^M - when the encodings gets messed up
+noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+
+" Quickly open a buffer for scripbble
+map <leader>q :e ~/buffer<cr>
+
+" Toggle paste mode on and off
+map <leader>pp :setlocal paste!<cr>
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Helper functions
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! CmdLine(str)
+    exe "menu Foo.Bar :" . a:str
+    emenu Foo.Bar
+    unmenu Foo
+endfunction
+
+function! VisualSelection(direction) range
+    let l:saved_reg = @"
+    execute "normal! vgvy"
+
+    let l:pattern = escape(@", '\\/.*$^~[]')
+    let l:pattern = substitute(l:pattern, "\n$", "", "")
+
+    if a:direction == 'b'
+        execute "normal ?" . l:pattern . "^M"
+    elseif a:direction == 'gv'
+        call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.')
+    elseif a:direction == 'replace'
+        call CmdLine("%s" . '/'. l:pattern . '/')
+    elseif a:direction == 'f'
+        execute "normal /" . l:pattern . "^M"
+    endif
+
+    let @/ = l:pattern
+    let @" = l:saved_reg
+endfunction
+
+
+" Returns true if paste mode is enabled
+function! HasPaste()
+    if &paste
+        return 'PASTE MODE  '
+    en
+    return ''
+endfunction
+
+" Don't close window, when deleting a buffer
+command! Bclose call <SID>BufcloseCloseIt()
+function! <SID>BufcloseCloseIt()
+   let l:currentBufNum = bufnr("%")
+   let l:alternateBufNum = bufnr("#")
+
+   if buflisted(l:alternateBufNum)
+     buffer #
+   else
+     bnext
+   endif
+
+   if bufnr("%") == l:currentBufNum
+     new
+   endif
+
+   if buflisted(l:currentBufNum)
+     execute("bdelete! ".l:currentBufNum)
+   endif
+endfunction

@@ -1,0 +1,84 @@
+### Credentials Comcast ###
+
+
+ifconfig
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+sudo apt-get update
+sudo apt-get install google-chrome-stable
+sudo apt-get install git
+mkdir .ssh
+  vi .ssh/config
+  vi .gitconfig
+  vi  /home/stbadmin/.netrc
+chmod 600 /home/stbadmin/.netrc
+ssh-keygen
+cat /home/stbadmin/.ssh/id_rsa.pub
+telnet gerrit.teamccp.com 29418
+wget http://commondatastorage.googleapis.com/git-repo-downloads/repo
+chmod +x repo
+vi ~/.bashrc
+source ~/.bashrc
+sudo apt-get install openjdk-7-jre
+sudo updatedb
+locate java-7-openjdk-amd64
+scp kcalligan@10.0.0.176:/home/kcalligan/nexus.teamccp.com.cer .
+export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64/
+source ~/.bashrc
+sudo chmod 644 $JAVA_HOME/jre/lib/security/cacerts
+sudo keytool -importcert -noprompt -file "nexus.teamccp.com.cer" -alias nexus.teamccp.com -destkeystore /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/security/cacerts
+sudo apt-get install make gcc g++ diffstat texinfo chrpath gcc-multilib git gawk build-essential autoconf libtool libncurses-dev gettext gperf lib32z1 libc6-i386 g++-multilib python-git
+mkdir mkdir xg2v2
+pushd xg2v2
+alias repo='/home/stbadmin/repo'
+repo init -u https://gerrit.teamccp.com/rdk/yocto_oe/manifests/samsung-bcm-manifest -b master -m samsungxg2v2.xml -g all
+repo sync
+
+## install repo
+
+mkdinr ~/bin
+curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+chmod a+x ~/bin/repo
+echo "alias repo='~/bin/repo'" > ~/.bashrc
+
+## start ssh session
+## Note, the home dir must not be encrypted so that long tmp file names are supported
+
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa
+
+sudo keytool -importcert -noprompt -file "nexus.teamccp.com.cer" -alias nexus.teamccp.com -destkeystore /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/security/cacerts
+## init & sync ##
+## XG2V2
+
+mkdir xg2v2
+pushd xg2v2
+repo init -u https://gerrit.teamccp.com/rdk/yocto_oe/manifests/samsung-bcm-manifest -b master -m samsungxg2v2.xml -g all
+or
+repo init -u https://gerrit.teamccp.com/rdk/yocto_oe/manifests/samsung-bcm-manifest -b stable2 -m samsungxg2v2.xml -g all
+
+## XID
+
+mkdir pacexid
+pushd pacexid
+repo init -u https://gerrit.teamccp.com/rdk/yocto_oe/manifests/pace-bcm-manifest -b master -m pacexid.xml -g all
+or
+repo init -u https://gerrit.teamccp.com/rdk/yocto_oe/manifests/pace-bcm-manifest -b stable2 -m pacexid.xml -g all
+
+repo sync
+
+## XGV2
+## Note, do not source setup as root
+
+source meta-rdk/setup-environment
+(select option 1?)
+bitbake comcast-hybrid-vbn-image
+tail -f /home/stbadmin1/home/stbadmin/xg2v2/build-samsungxg2v2/tmp/log/cooker/samsungxg2v2/*.log
+
+## XID
+## Note, do not source setup as root
+
+source meta-rdk/setup-environment
+(select option 11?)
+bitbake comcast-mediaclient-vbn-image
+tail -f /home/stbadmin1/home/stbadmin/pacexid/build-pacexid/tmp/log/cooker/pacexid/*.log

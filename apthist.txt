@@ -1,0 +1,40 @@
+   32  12:16:2015:15:45:17 grep "apt-get" .
+   34  12:16:2015:15:45:33 grep "apt-get" .
+   35  12:16:2015:15:45:37 grep "apt-get" 
+   36  12:16:2015:15:45:51 grep -r "apt-get" .
+   37  12:16:2015:15:45:55 grep -r "apt-get" . | less
+   42  12:16:2015:16:01:29 sudo apt-get install python-dev python3-venv
+   43  12:16:2015:16:02:09 sudo apt-get install libqt4-guit
+   44  12:16:2015:16:02:12 sudo apt-get install libqt4-gui
+   45  12:16:2015:16:02:26 sudo apt-get install checkinstall libgmp-dev build-essential
+   46  12:16:2015:16:02:34 sudo apt-get install ubuntu-make
+   47  12:16:2015:16:02:54 sudo apt-get install libstdc++
+   48  12:16:2015:16:04:25 sudo apt-get install openssh-server tkdiff sqlite3 npm smlnj
+   49  12:16:2015:16:12:21 sudo apt-get install tmux gnome-shell gnome-tweak-tool unity-tweak-tool zlib1g-dev libfreetype6-dev liblcms1-dev python-dev libjpeg62-dev libtiff4-dev libjpeg8-dev zlib1g-dev python3-dev python3-setuptools  python-virtualenv 
+   50  12:16:2015:16:13:22 sudo apt-get install tmux gnome-shell gnome-tweak-tool unity-tweak-tool zlib1g-dev libfreetype6-dev python-dev libjpeg62-dev libjpeg8-dev zlib1g-dev python3-dev python3-setuptools  python-virtualenv
+   51  12:16:2015:16:13:44 sudo apt-get install libjpeg-turbo8-dev
+   52  12:16:2015:16:13:52 sudo apt-get install tmux gnome-shell gnome-tweak-tool unity-tweak-tool zlib1g-dev libfreetype6-dev python-dev libjpeg62-dev libjpeg8-dev zlib1g-dev python3-dev python3-setuptools  python-virtualenv
+   53  12:16:2015:16:14:19 sudo apt-get install tmux gnome-shell gnome-tweak-tool unity-tweak-tool zlib1g-dev libfreetype6-dev python-dev libjpeg8-dev zlib1g-dev python3-dev python3-setuptools  python-virtualenv
+   77  12:16:2015:16:26:47 sudo apt-get install gvim
+   78  12:16:2015:16:26:56 sudo apt-get install vim-gnome 
+  122  12:16:2015:15:47:16 sudo apt-get update
+  123  12:16:2015:15:47:29 sudo apt-get install google-chrome-stable
+  124  12:16:2015:15:48:12 sudo apt-get install git
+  196  12:18:2015:09:30:59 history | grep apt-get > apthist.out
+  198  12:18:2015:09:31:08 history | grep apt-get > apthist.out
+   10  sudo apt-get install curl
+   24  sudo apt-get install openjdk-7-jre
+   27  sudo apt-get install vim
+   28  sudo apt-get install libqt4-dev libqt4-core libqt4-xml libqt4-opengl
+   29  sudo apt-get install openssh-server tkdiff sqlite3 npm smlnj
+   30  sudo apt-get install python-dev python3-venv
+   31  apt-get update
+   32  apt-get upgrade
+   33  apt-get autoremove
+   34  sudo apt-get install cryptmount
+   35  apt-get install vim
+   36  apt-get install nodejs nodejs-legacy npm libjs-angularjs
+   37  sudo apt-get install texlive-latex-extra texlive-xetex fonts-liberation inkscape pandoc
+   40  sudo apt-get update
+   56   history | grep apt-get >> apthist.out 
+   sudo apt-get install network-manager-openconnect

@@ -83,4 +83,7 @@ source meta-rdk/setup-environment
 bitbake comcast-mediaclient-vbn-image
 tail -f /home/stbadmin1/home/stbadmin/pacexid/build-pacexid/tmp/log/cooker/pacexid/*.log
 
-
+## clean
+bitbake Comcast-mediaclient-vbn-image -c cleanall -f
+bitbake stblinux -c cleanall -f
+bitbake busybox -c cleanall -f

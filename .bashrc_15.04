@@ -247,9 +247,24 @@ alias etlmake='make clean-cache; make etl_node'
 alias remake='make clean; make all; make jenkins'
 alias tmake='make clean; make jenkins && gti'
 
+# libvirt virsh virtmanager
 alias vmrvt='for hn in A B C D E F G H ; do sudo virsh snapshot-revert --domain Cent6$hn ssvm; done'
-
 alias vmka='for hn in A B C D E F G H ; do sudo virsh shutdown Cent6$hn; done'
 
 #gitk --a #all branch history
 #gitk commit history
+
+# vmw 
+alias pext='pushd /media/stbadmin/dskext'
+
+# GCC
+alias gcc5='/usr/bin/gcc'
+alias gcc4='/usr/bin/gcc-4.9'
+alias gcc='/usr/bin/gcc-4.9'
+
+# whitecryption
+alias wcconf='export CC=$MHOME/wcscp/SCP-2.15.0/scp-unix-gcc; export CXX=$MHOME/wcscp/SCP-2.15.0/scp-unix-g++'
+alias rscp='/home/stbadmin/dskext/SCP-2.15.1/scp'
+
+# comcast
+alias pxinit='repo init -u https://gerrit.teamccp.com/rdk/yocto_oe/manifests/pace-bcm-manifest -b stable2 -m pacexid.xml -g all && repo sync'

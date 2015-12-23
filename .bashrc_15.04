@@ -148,7 +148,8 @@ PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/lib/x86_64-linux-gnu
 # shortcuts
 alias mtar='tar -czvf'
 alias utar='tar -xzvf'
-
+alias mtarb='tar -cjvf'
+alias utarb='tar -xjvf'
 alias drm='rm -rf'
 alias dcp='cp -rf'
 

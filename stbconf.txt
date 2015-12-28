@@ -78,6 +78,11 @@ tail -f /home/stbadmin1/home/stbadmin/xg2v2/build-samsungxg2v2/tmp/log/cooker/sa
 ## XID
 ## Note, do not source setup as root
 
+## MASTER
+edit meta-rdk-comcast/recipes-qt/xre-receiver/xre-receiver-default_git.bb add hdmicec to depends
+## STABLE2
+edit meta-rdk/recipes-thirdparty/tr69/tr69hostif_git.bb add storagemanager to depends
+
 source meta-rdk/setup-environment
 (select option 11?)
 bitbake comcast-mediaclient-vbn-image

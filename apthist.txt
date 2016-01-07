@@ -39,3 +39,4 @@
    56   history | grep apt-get >> apthist.out 
    sudo apt-get install network-manager-openconnect
 sudo apt-get install upstart
+sudo apt-get install qt5-default qttools5-dev-tools

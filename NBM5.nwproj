@@ -29,3 +29,48 @@
 		<packExecutable>false</packExecutable>
 		<encryptMetadata>false</encryptMetadata>
 		<codeIntegrityChecksStrength>5</codeIntegrityChecksStrength>
+		<dataIntegrityChecksStrength>5</dataIntegrityChecksStrength>
+		<casesPerSwitch>1800</casesPerSwitch>
+		<useRelocationChecksum>0</useRelocationChecksum>
+		<stripOutput>true</stripOutput>
+		<ignoreWerror>true</ignoreWerror>
+		<executeUpdateBinary>true</executeUpdateBinary>
+		<useProtectionSeed>false</useProtectionSeed>
+		<protectionSeed>0</protectionSeed>
+		<useIntegrityTamperCallback>false</useIntegrityTamperCallback>
+		<useAntidebugTamperCallback>false</useAntidebugTamperCallback>
+		<useJailbreakTamperCallback>false</useJailbreakTamperCallback>
+		<useSwizzlingTamperCallback>false</useSwizzlingTamperCallback>
+		<useRootTamperCallback>false</useRootTamperCallback>
+		<integrityTamperCallback/>
+		<antidebugTamperCallback/>
+		<jailbreakTamperCallback/>
+		<swizzlingTamperCallback/>
+		<rootTamperCallback/>
+		<integrityTamperCallbackAction>CorruptState</integrityTamperCallbackAction>
+		<antidebugTamperCallbackAction>CorruptState</antidebugTamperCallbackAction>
+		<jailbreakTamperCallbackAction>CorruptState</jailbreakTamperCallbackAction>
+		<swizzlingTamperCallbackAction>CorruptState</swizzlingTamperCallbackAction>
+		<rootTamperCallbackAction>CorruptState</rootTamperCallbackAction>
+		<group name="default" useDefaultGroupSettings="false">
+			<dataIntegrity>true</dataIntegrity>
+			<codeIntegrity>true</codeIntegrity>
+			<antiDebug>true</antiDebug>
+			<antiDebugStrength>5</antiDebugStrength>
+			<obfuscationCode>25</obfuscationCode>
+			<basicBlockStatements>10</basicBlockStatements>
+			<codeFlowDiversity>5</codeFlowDiversity>
+			<obfuscationVariables>7</obfuscationVariables>
+			<obfuscationCoverage>60</obfuscationCoverage>
+			<blockStateObfuscation>25</blockStateObfuscation>
+			<dummyBlockStrength>10</dummyBlockStrength>
+			<stringLiteralObfuscation>1</stringLiteralObfuscation>
+			<smallFunctionObfuscation>false</smallFunctionObfuscation>
+			<keepObfuscationCode>false</keepObfuscationCode>
+			<staticFunctionInlineing>false</staticFunctionInlineing>
+			<maxInlinedBlocks>100</maxInlinedBlocks>
+		</group>
+	</platform>
+</nw>
+
+

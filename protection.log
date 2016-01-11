@@ -1,0 +1,343 @@
+Incremental analysis of the source code is not needed!
+Protecting - copying modified files to the protected folder...24 msec
+Protecting - running the source obfuscation process...
+Dropping marker information from the database... Done.
+Getting data from additional databases... 
+Done.
+Processing profiling information... Done.
+WARNING! Cannot find profiling data. The protected application may be slow.
+WARNING! File not found: conftest.c. It will not be protected!
+WARNING! File not found: conftest.c. It will not be protected!
+WARNING! File not found: conftest.c. It will not be protected!
+WARNING! File not found: conftest.c. It will not be protected!
+WARNING! File not found: conftest.c. It will not be protected!
+WARNING! File not found: conftest.c. It will not be protected!
+WARNING! File not found: conftest.c. It will not be protected!
+WARNING! File not found: conftest.c. It will not be protected!
+WARNING! File not found: conftest.c. It will not be protected!
+WARNING! File not found: conftest.dir/sub/conftest.c. It will not be protected!
+Obfuscating src/c_ansic.c ... 1010 msec
+Obfuscating src/c_ansim.c ... 955 msec
+Obfuscating src/c_init.c ... 1256 msec
+Obfuscating src/c_none.c ... 938 msec
+Obfuscating src/c_screen.c ... 936 msec
+Obfuscating src/compress.c ... 1495 msec
+Obfuscating src/djgpp2.c ... 865 msec
+Obfuscating src/filter.c ... 1337 msec
+Obfuscating src/frames.c ... 851 msec
+Obfuscating src/help.c ... 1229 msec
+Obfuscating src/lzop.c ... 7495 msec
+Obfuscating src/mblock.c ... 998 msec
+Obfuscating src/p_lzo.c ... 2012 msec
+Obfuscating src/s_curses.c ... 865 msec
+Obfuscating src/s_djgpp2.c ... 858 msec
+Obfuscating src/s_object.c ... 875 msec
+Obfuscating src/s_vcsa.c ... 887 msec
+Obfuscating src/util.c ... 2890 msec
+Total time = 27 sec
+Protecting - building the protected source...
+configure: Configuring lzop 1.03
+checking build system type... x86_64-unknown-linux-gnu
+checking host system type... x86_64-unknown-linux-gnu
+checking target system type... x86_64-unknown-linux-gnu
+checking whether to enable maintainer-specific portions of Makefiles... no
+checking for gcc... /home/stbadmin/SCP-2.15.1/scp-unix-gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether /home/stbadmin/SCP-2.15.1/scp-unix-gcc accepts -g... yes
+checking for /home/stbadmin/SCP-2.15.1/scp-unix-gcc option to accept ISO C89... none needed
+checking whether /home/stbadmin/SCP-2.15.1/scp-unix-gcc understands -c and -o together... yes
+checking how to run the C preprocessor... /home/stbadmin/SCP-2.15.1/scp-unix-gcc -E
+checking whether the C preprocessor needs special flags... none needed
+checking for an ANSI C-conforming const... yes
+checking for grep that handles long lines and -e... /bin/grep
+checking for egrep... /bin/grep -E
+checking for ANSI C header files... no
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking whether byte ordering is bigendian... no
+checking for special C compiler options needed for large files... no
+checking for _FILE_OFFSET_BITS value needed for large files... no
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a thread-safe mkdir -p... /bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking for style of include used by make... GNU
+checking whether make supports nested variables... yes
+checking dependency style of /home/stbadmin/SCP-2.15.1/scp-unix-gcc... gcc3
+checking whether make supports nested variables... (cached) yes
+checking whether time.h and sys/time.h may both be included... yes
+checking assert.h usability... yes
+checking assert.h presence... yes
+checking for assert.h... yes
+checking ctype.h usability... yes
+checking ctype.h presence... yes
+checking for ctype.h... yes
+checking dirent.h usability... yes
+checking dirent.h presence... yes
+checking for dirent.h... yes
+checking errno.h usability... yes
+checking errno.h presence... yes
+checking for errno.h... yes
+checking fcntl.h usability... yes
+checking fcntl.h presence... yes
+checking for fcntl.h... yes
+checking float.h usability... yes
+checking float.h presence... yes
+checking for float.h... yes
+checking limits.h usability... yes
+checking limits.h presence... yes
+checking for limits.h... yes
+checking malloc.h usability... yes
+checking malloc.h presence... yes
+checking for malloc.h... yes
+checking for memory.h... (cached) yes
+checking setjmp.h usability... yes
+checking setjmp.h presence... yes
+checking for setjmp.h... yes
+checking signal.h usability... yes
+checking signal.h presence... yes
+checking for signal.h... yes
+checking stdarg.h usability... yes
+checking stdarg.h presence... yes
+checking for stdarg.h... yes
+checking stddef.h usability... yes
+checking stddef.h presence... yes
+checking for stddef.h... yes
+checking for stdint.h... (cached) yes
+checking stdio.h usability... yes
+checking stdio.h presence... yes
+checking for stdio.h... yes
+checking for stdlib.h... (cached) yes
+checking for string.h... (cached) yes
+checking for strings.h... (cached) yes
+checking time.h usability... yes
+checking time.h presence... yes
+checking for time.h... yes
+checking for unistd.h... (cached) yes
+checking utime.h usability... yes
+checking utime.h presence... yes
+checking for utime.h... yes
+checking for sys/stat.h... (cached) yes
+checking sys/time.h usability... yes
+checking sys/time.h presence... yes
+checking for sys/time.h... yes
+checking for sys/types.h... (cached) yes
+checking sys/wait.h usability... yes
+checking sys/wait.h presence... yes
+checking for sys/wait.h... yes
+checking whether limits.h is sane... yes
+checking lzo/lzoconf.h usability... yes
+checking lzo/lzoconf.h presence... yes
+checking for lzo/lzoconf.h... yes
+checking lzo/lzo1x.h usability... yes
+checking lzo/lzo1x.h presence... yes
+checking for lzo/lzo1x.h... yes
+checking for version information in lzo/lzoconf.h...... v2
+checking for __lzo_init_v2 in -llzo2... yes
+checking for lzo1x_decompress_asm_fast in -llzo2... no
+checking for _lzo1x_decompress_asm_fast in -llzo2... no
+checking conio.h usability... no
+checking conio.h presence... no
+checking for conio.h... no
+checking direct.h usability... no
+checking direct.h presence... no
+checking for direct.h... no
+checking dos.h usability... no
+checking dos.h presence... no
+checking for dos.h... no
+checking io.h usability... no
+checking io.h presence... no
+checking for io.h... no
+checking share.h usability... no
+checking share.h presence... no
+checking for share.h... no
+checking sys/utime.h usability... no
+checking sys/utime.h presence... no
+checking for sys/utime.h... no
+checking for off_t... yes
+checking for ptrdiff_t... no
+checking for size_t... yes
+checking return type of signal handlers... void
+checking for nanoseconds member of struct stat.st_mtim... tv_nsec
+checking size of short... 2
+checking size of int... 4
+checking size of long... 8
+checking size of long long... 8
+checking size of __int16... 0
+checking size of __int32... 0
+checking size of __int64... 0
+checking size of void *... 8
+checking size of size_t... 8
+checking size of ptrdiff_t... 8
+checking size of __int32... (cached) 0
+checking size of intmax_t... 8
+checking size of uintmax_t... 8
+checking size of intptr_t... 8
+checking size of uintptr_t... 8
+checking size of float... 4
+checking size of double... 8
+checking size of long double... 16
+checking size of dev_t... 8
+checking size of fpos_t... 16
+checking size of mode_t... 4
+checking size of off_t... 8
+checking size of ssize_t... 8
+checking size of time_t... 8
+checking for access... yes
+checking for alloca... no
+checking for atexit... yes
+checking for atoi... yes
+checking for atol... yes
+checking for chmod... yes
+checking for chown... yes
+checking for ctime... yes
+checking for difftime... yes
+checking for fstat... yes
+checking for gettimeofday... yes
+checking for gmtime... yes
+checking for localtime... yes
+checking for longjmp... yes
+checking for lstat... yes
+checking for memcmp... yes
+checking for memcpy... yes
+checking for memmove... yes
+checking for memset... yes
+checking for mktime... yes
+checking for qsort... yes
+checking for raise... yes
+checking for setjmp... yes
+checking for signal... yes
+checking for snprintf... yes
+checking for strcasecmp... yes
+checking for strchr... yes
+checking for strdup... yes
+checking for strerror... yes
+checking for strftime... yes
+checking for stricmp... no
+checking for strncasecmp... yes
+checking for strnicmp... no
+checking for strrchr... yes
+checking for strstr... yes
+checking for time... yes
+checking for umask... yes
+checking for utime... yes
+checking for vsnprintf... yes
+checking whether your compiler passes the ACC conformance test... yes
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating doc/Makefile
+config.status: creating src/Makefile
+config.status: creating config.h
+config.status: executing depfiles commands
+
+lzop configuration summary
+--------------------------
+lzop version : 1.03
+configured for host : x86_64-unknown-linux-gnu
+source code location : .
+compiler : /home/stbadmin/SCP-2.15.1/scp-unix-gcc
+preprocessor flags : -isystem/home/stbadmin/pacexid_master/build-pacexid/tmp/sysroots/x86_64-linux/usr/include -DLZOP_HAVE_CONFIG_H -DLZOP_HAVE_CONFIG_H
+compiler flags : -g -O2
+linker flags : -L/home/stbadmin/pacexid_master/build-pacexid/tmp/sysroots/x86_64-linux/usr/lib -L/home/stbadmin/pacexid_master/build-pacexid/tmp/sysroots/x86_64-linux/lib -Wl,-rpath-link,/home/stbadmin/pacexid_master/build-pacexid/tmp/sysroots/x86_64-linux/usr/lib -Wl,-rpath-link,/home/stbadmin/pacexid_master/build-pacexid/tmp/sysroots/x86_64-linux/lib -Wl,-rpath,/home/stbadmin/pacexid_master/build-pacexid/tmp/sysroots/x86_64-linux/usr/lib -Wl,-rpath,/home/stbadmin/pacexid_master/build-pacexid/tmp/sysroots/x86_64-linux/lib -Wl,-O1
+link libraries : -llzo2 
+
+
+lzop 1.03 configured.
+
+Copyright (C) 1996-2010 Markus Franz Xaver Johannes Oberhumer
+All Rights Reserved.
+
+lzop and the LZO library are free software; you can redistribute them
+and/or modify them under the terms of the GNU General Public License as
+published by the Free Software Foundation; either version 2 of
+the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+Markus F.X.J. Oberhumer
+<markus@oberhumer.com>
+http://www.oberhumer.com/opensource/lzop/
+
+
+Type `make' to build lzop. Type `make install' to install lzop.
+After installing lzop, please read the accompanied documentation.
+
+make all-recursive
+make[1]: Entering directory '/home/stbadmin/pacexid_master/build-pacexid/tmp/work/x86_64-linux/lzop-native/1.03-r0/lzop-1.03_protected'
+Making all in src
+make[2]: Entering directory '/home/stbadmin/pacexid_master/build-pacexid/tmp/work/x86_64-linux/lzop-native/1.03-r0/lzop-1.03_protected/src'
+/home/stbadmin/SCP-2.15.1/scp-unix-gcc -DHAVE_CONFIG_H -I. -I.. -isystem/home/stbadmin/pacexid_master/build-pacexid/tmp/sysroots/x86_64-linux/usr/include -DLZOP_HAVE_CONFIG_H -DLZOP_HAVE_CONFIG_H -g -O2 -MT lzop.o -MD -MP -MF .deps/lzop.Tpo -c -o lzop.o lzop.c
+mv -f .deps/lzop.Tpo .deps/lzop.Po
+/home/stbadmin/SCP-2.15.1/scp-unix-gcc -DHAVE_CONFIG_H -I. -I.. -isystem/home/stbadmin/pacexid_master/build-pacexid/tmp/sysroots/x86_64-linux/usr/include -DLZOP_HAVE_CONFIG_H -DLZOP_HAVE_CONFIG_H -g -O2 -MT compress.o -MD -MP -MF .deps/compress.Tpo -c -o compress.o compress.c
+mv -f .deps/compress.Tpo .deps/compress.Po
+/home/stbadmin/SCP-2.15.1/scp-unix-gcc -DHAVE_CONFIG_H -I. -I.. -isystem/home/stbadmin/pacexid_master/build-pacexid/tmp/sysroots/x86_64-linux/usr/include -DLZOP_HAVE_CONFIG_H -DLZOP_HAVE_CONFIG_H -g -O2 -MT filter.o -MD -MP -MF .deps/filter.Tpo -c -o filter.o filter.c
+mv -f .deps/filter.Tpo .deps/filter.Po
+/home/stbadmin/SCP-2.15.1/scp-unix-gcc -DHAVE_CONFIG_H -I. -I.. -isystem/home/stbadmin/pacexid_master/build-pacexid/tmp/sysroots/x86_64-linux/usr/include -DLZOP_HAVE_CONFIG_H -DLZOP_HAVE_CONFIG_H -g -O2 -MT help.o -MD -MP -MF .deps/help.Tpo -c -o help.o help.c
+mv -f .deps/help.Tpo .deps/help.Po
+/home/stbadmin/SCP-2.15.1/scp-unix-gcc -DHAVE_CONFIG_H -I. -I.. -isystem/home/stbadmin/pacexid_master/build-pacexid/tmp/sysroots/x86_64-linux/usr/include -DLZOP_HAVE_CONFIG_H -DLZOP_HAVE_CONFIG_H -g -O2 -MT mblock.o -MD -MP -MF .deps/mblock.Tpo -c -o mblock.o mblock.c
+mv -f .deps/mblock.Tpo .deps/mblock.Po
+/home/stbadmin/SCP-2.15.1/scp-unix-gcc -DHAVE_CONFIG_H -I. -I.. -isystem/home/stbadmin/pacexid_master/build-pacexid/tmp/sysroots/x86_64-linux/usr/include -DLZOP_HAVE_CONFIG_H -DLZOP_HAVE_CONFIG_H -g -O2 -MT p_lzo.o -MD -MP -MF .deps/p_lzo.Tpo -c -o p_lzo.o p_lzo.c
+mv -f .deps/p_lzo.Tpo .deps/p_lzo.Po
+/home/stbadmin/SCP-2.15.1/scp-unix-gcc -DHAVE_CONFIG_H -I. -I.. -isystem/home/stbadmin/pacexid_master/build-pacexid/tmp/sysroots/x86_64-linux/usr/include -DLZOP_HAVE_CONFIG_H -DLZOP_HAVE_CONFIG_H -g -O2 -MT util.o -MD -MP -MF .deps/util.Tpo -c -o util.o util.c
+mv -f .deps/util.Tpo .deps/util.Po
+/home/stbadmin/SCP-2.15.1/scp-unix-gcc -DHAVE_CONFIG_H -I. -I.. -isystem/home/stbadmin/pacexid_master/build-pacexid/tmp/sysroots/x86_64-linux/usr/include -DLZOP_HAVE_CONFIG_H -DLZOP_HAVE_CONFIG_H -g -O2 -MT c_init.o -MD -MP -MF .deps/c_init.Tpo -c -o c_init.o c_init.c
+mv -f .deps/c_init.Tpo .deps/c_init.Po
+/home/stbadmin/SCP-2.15.1/scp-unix-gcc -DHAVE_CONFIG_H -I. -I.. -isystem/home/stbadmin/pacexid_master/build-pacexid/tmp/sysroots/x86_64-linux/usr/include -DLZOP_HAVE_CONFIG_H -DLZOP_HAVE_CONFIG_H -g -O2 -MT c_none.o -MD -MP -MF .deps/c_none.Tpo -c -o c_none.o c_none.c
+mv -f .deps/c_none.Tpo .deps/c_none.Po
+/home/stbadmin/SCP-2.15.1/scp-unix-gcc -DHAVE_CONFIG_H -I. -I.. -isystem/home/stbadmin/pacexid_master/build-pacexid/tmp/sysroots/x86_64-linux/usr/include -DLZOP_HAVE_CONFIG_H -DLZOP_HAVE_CONFIG_H -g -O2 -MT c_ansim.o -MD -MP -MF .deps/c_ansim.Tpo -c -o c_ansim.o c_ansim.c
+mv -f .deps/c_ansim.Tpo .deps/c_ansim.Po
+/home/stbadmin/SCP-2.15.1/scp-unix-gcc -DHAVE_CONFIG_H -I. -I.. -isystem/home/stbadmin/pacexid_master/build-pacexid/tmp/sysroots/x86_64-linux/usr/include -DLZOP_HAVE_CONFIG_H -DLZOP_HAVE_CONFIG_H -g -O2 -MT c_ansic.o -MD -MP -MF .deps/c_ansic.Tpo -c -o c_ansic.o c_ansic.c
+mv -f .deps/c_ansic.Tpo .deps/c_ansic.Po
+/home/stbadmin/SCP-2.15.1/scp-unix-gcc -DHAVE_CONFIG_H -I. -I.. -isystem/home/stbadmin/pacexid_master/build-pacexid/tmp/sysroots/x86_64-linux/usr/include -DLZOP_HAVE_CONFIG_H -DLZOP_HAVE_CONFIG_H -g -O2 -MT c_screen.o -MD -MP -MF .deps/c_screen.Tpo -c -o c_screen.o c_screen.c
+mv -f .deps/c_screen.Tpo .deps/c_screen.Po
+/home/stbadmin/SCP-2.15.1/scp-unix-gcc -DHAVE_CONFIG_H -I. -I.. -isystem/home/stbadmin/pacexid_master/build-pacexid/tmp/sysroots/x86_64-linux/usr/include -DLZOP_HAVE_CONFIG_H -DLZOP_HAVE_CONFIG_H -g -O2 -MT s_object.o -MD -MP -MF .deps/s_object.Tpo -c -o s_object.o s_object.c
+mv -f .deps/s_object.Tpo .deps/s_object.Po
+/home/stbadmin/SCP-2.15.1/scp-unix-gcc -DHAVE_CONFIG_H -I. -I.. -isystem/home/stbadmin/pacexid_master/build-pacexid/tmp/sysroots/x86_64-linux/usr/include -DLZOP_HAVE_CONFIG_H -DLZOP_HAVE_CONFIG_H -g -O2 -MT s_curses.o -MD -MP -MF .deps/s_curses.Tpo -c -o s_curses.o s_curses.c
+mv -f .deps/s_curses.Tpo .deps/s_curses.Po
+/home/stbadmin/SCP-2.15.1/scp-unix-gcc -DHAVE_CONFIG_H -I. -I.. -isystem/home/stbadmin/pacexid_master/build-pacexid/tmp/sysroots/x86_64-linux/usr/include -DLZOP_HAVE_CONFIG_H -DLZOP_HAVE_CONFIG_H -g -O2 -MT s_djgpp2.o -MD -MP -MF .deps/s_djgpp2.Tpo -c -o s_djgpp2.o s_djgpp2.c
+mv -f .deps/s_djgpp2.Tpo .deps/s_djgpp2.Po
+/home/stbadmin/SCP-2.15.1/scp-unix-gcc -DHAVE_CONFIG_H -I. -I.. -isystem/home/stbadmin/pacexid_master/build-pacexid/tmp/sysroots/x86_64-linux/usr/include -DLZOP_HAVE_CONFIG_H -DLZOP_HAVE_CONFIG_H -g -O2 -MT s_vcsa.o -MD -MP -MF .deps/s_vcsa.Tpo -c -o s_vcsa.o s_vcsa.c
+mv -f .deps/s_vcsa.Tpo .deps/s_vcsa.Po
+/home/stbadmin/SCP-2.15.1/scp-unix-gcc -DHAVE_CONFIG_H -I. -I.. -isystem/home/stbadmin/pacexid_master/build-pacexid/tmp/sysroots/x86_64-linux/usr/include -DLZOP_HAVE_CONFIG_H -DLZOP_HAVE_CONFIG_H -g -O2 -MT frames.o -MD -MP -MF .deps/frames.Tpo -c -o frames.o frames.c
+mv -f .deps/frames.Tpo .deps/frames.Po
+/home/stbadmin/SCP-2.15.1/scp-unix-gcc -DHAVE_CONFIG_H -I. -I.. -isystem/home/stbadmin/pacexid_master/build-pacexid/tmp/sysroots/x86_64-linux/usr/include -DLZOP_HAVE_CONFIG_H -DLZOP_HAVE_CONFIG_H -g -O2 -MT djgpp2.o -MD -MP -MF .deps/djgpp2.Tpo -c -o djgpp2.o djgpp2.c
+mv -f .deps/djgpp2.Tpo .deps/djgpp2.Po
+/home/stbadmin/SCP-2.15.1/scp-unix-gcc -g -O2 -L/home/stbadmin/pacexid_master/build-pacexid/tmp/sysroots/x86_64-linux/usr/lib -L/home/stbadmin/pacexid_master/build-pacexid/tmp/sysroots/x86_64-linux/lib -Wl,-rpath-link,/home/stbadmin/pacexid_master/build-pacexid/tmp/sysroots/x86_64-linux/usr/lib -Wl,-rpath-link,/home/stbadmin/pacexid_master/build-pacexid/tmp/sysroots/x86_64-linux/lib -Wl,-rpath,/home/stbadmin/pacexid_master/build-pacexid/tmp/sysroots/x86_64-linux/usr/lib -Wl,-rpath,/home/stbadmin/pacexid_master/build-pacexid/tmp/sysroots/x86_64-linux/lib -Wl,-O1 -o lzop lzop.o compress.o filter.o help.o mblock.o p_lzo.o util.o c_init.o c_none.o c_ansim.o c_ansic.o c_screen.o s_object.o s_curses.o s_djgpp2.o s_vcsa.o frames.o djgpp2.o -llzo2 
+Code is protected by 82 checkers. The average overlap count is 5.
+Data is protected by 82 checkers. The average overlap count is 5.
+Sections covered by checkers: .text, .rodata
+make[2]: Leaving directory '/home/stbadmin/pacexid_master/build-pacexid/tmp/work/x86_64-linux/lzop-native/1.03-r0/lzop-1.03_protected/src'
+Making all in doc
+make[2]: Entering directory '/home/stbadmin/pacexid_master/build-pacexid/tmp/work/x86_64-linux/lzop-native/1.03-r0/lzop-1.03_protected/doc'
+make all-am
+make[3]: Entering directory '/home/stbadmin/pacexid_master/build-pacexid/tmp/work/x86_64-linux/lzop-native/1.03-r0/lzop-1.03_protected/doc'
+make[3]: Nothing to be done for 'all-am'.
+make[3]: Leaving directory '/home/stbadmin/pacexid_master/build-pacexid/tmp/work/x86_64-linux/lzop-native/1.03-r0/lzop-1.03_protected/doc'
+make[2]: Leaving directory '/home/stbadmin/pacexid_master/build-pacexid/tmp/work/x86_64-linux/lzop-native/1.03-r0/lzop-1.03_protected/doc'
+make[2]: Entering directory '/home/stbadmin/pacexid_master/build-pacexid/tmp/work/x86_64-linux/lzop-native/1.03-r0/lzop-1.03_protected'
+make[2]: Leaving directory '/home/stbadmin/pacexid_master/build-pacexid/tmp/work/x86_64-linux/lzop-native/1.03-r0/lzop-1.03_protected'
+make[1]: Leaving directory '/home/stbadmin/pacexid_master/build-pacexid/tmp/work/x86_64-linux/lzop-native/1.03-r0/lzop-1.03_protected'
+
+> FAILURE 
+
+Exporting protection.. Done
+
+> SUCCESS 
+

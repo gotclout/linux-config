@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<nw version="n5" generator="2.15.1">
+	<platform type="linux">
+		<selectiveAnalysis>true</selectiveAnalysis>
+		<sourceRoot>../pacexid_master/build-pacexid/tmp/work/x86_64-linux/lzop-native/1.03-r0/lzop-1.03</sourceRoot>
+		<buildLocation>../pacexid_master/build-pacexid/tmp/work/x86_64-linux/lzop-native/1.03-r0/lzop-1.03</buildLocation>
+		<analysisRoot>../pacexid_master/build-pacexid/tmp/work/x86_64-linux/lzop-native/1.03-r0/lzop-1.03_analysis</analysisRoot>
+		<profilingRoot>../pacexid_master/build-pacexid/tmp/work/x86_64-linux/lzop-native/1.03-r0/lzop-1.03_profiling</profilingRoot>
+		<protectedRoot>../pacexid_master/build-pacexid/tmp/work/x86_64-linux/lzop-native/1.03-r0/lzop-1.03_protected</protectedRoot>
+		<frontendType>default</frontendType>
+		<profilingServerAddress/>
+		<profilingServerPort>26892</profilingServerPort>
+		<useCustomCommand>true</useCustomCommand>
+		<maxThreads>8</maxThreads>
+		<networkProfiling>false</networkProfiling>
+		<profilingFile>scp_profiling.nwprofile</profilingFile>
+		<deleteProfilingFile>true</deleteProfilingFile>
+		<customBuild>autoconf; ./configure;  make</customBuild>
+		<additionalEnv>BB_ENV_EXTRAWHITE=MACHINE DISTRO TCMODE TCLIBC HTTP_PROXY http_proxy HTTPS_PROXY https_proxy FTP_PROXY ftp_proxy FTPS_PROXY ftps_proxy ALL_PROXY all_proxy NO_PROXY no_proxy SSH_AGENT_PID SSH_AUTH_SOCK BB_SRCREV_POLICY SDKMACHINE BB_NUMBER_THREADS BB_NO_NETWORK PARALLEL_MAKE GIT_PROXY_COMMAND SOCKS5_PASSWD SOCKS5_USER SCREENDIR STAMPS_DIR</additionalEnv>
+		<additionalEnv>CPPFLAGS = -isystem/home/stbadmin/pacexid_master/build-pacexid/tmp/sysroots/x86_64-linux/usr/include -DLZOP_HAVE_CONFIG_H</additionalEnv>
+		<additionalEnv>PATH=/home/stbadmin/scputil:/home/stbadmin/pacexid_master/openembedded-core/scripts:/home/stbadmin/pacexid_master/openembedded-core/bitbake/bin:/home/stbadmin/xid_master/openembedded-core/scripts:/home/stbadmin/xid_master/openembedded-core/bitbake/bin:/home/stbadmin/xid_stable2/openembedded-core/scripts:/home/stbadmin/xid_stable2/openembedded-core/bitbake/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/stbadmin/Utils/node_modules/bower/bin:/home/stbadmin/Utils/scripts:/home/stbadmin/pacexid/generic/closedcaption-hal-brcm-xid/</additionalEnv>
+		<additionalEnv>CPPFLAGS=-isystem/home/stbadmin/pacexid_master/build-pacexid/tmp/sysroots/x86_64-linux/usr/include -DLZOP_HAVE_CONFIG_H</additionalEnv>
+		<additionalEnv>LDFLAGS=-L/home/stbadmin/pacexid_master/build-pacexid/tmp/sysroots/x86_64-linux/usr/lib -L/home/stbadmin/pacexid_master/build-pacexid/tmp/sysroots/x86_64-linux/lib -Wl,-rpath-link,/home/stbadmin/pacexid_master/build-pacexid/tmp/sysroots/x86_64-linux/usr/lib -Wl,-rpath-link,/home/stbadmin/pacexid_master/build-pacexid/tmp/sysroots/x86_64-linux/lib -Wl,-rpath,/home/stbadmin/pacexid_master/build-pacexid/tmp/sysroots/x86_64-linux/usr/lib -Wl,-rpath,/home/stbadmin/pacexid_master/build-pacexid/tmp/sysroots/x86_64-linux/lib -Wl,-O1</additionalEnv>
+		<excludeOutsideRoot>false</excludeOutsideRoot>
+		<debugLogging>0</debugLogging>
+		<traceLogging>0</traceLogging>
+		<protectionLevel>90</protectionLevel>
+		<evaluationIntegrity>false</evaluationIntegrity>
+		<packExecutable>false</packExecutable>
+		<encryptMetadata>false</encryptMetadata>
+		<codeIntegrityChecksStrength>5</codeIntegrityChecksStrength>

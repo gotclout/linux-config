@@ -337,7 +337,8 @@ add user with root access
  adduser rfoster -G root
  sudo passwd rfoster
  rpm -ivh {rpm-file}
-
+give user admin priv
+sudo adduser stbadmin sudo
 visudo add line with root but replace with username
 
 change owner recurssive

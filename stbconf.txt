@@ -15,6 +15,16 @@ chmod 600 /home/stbadmin/.netrc
 ssh-keygen
 cat /home/stbadmin/.ssh/id_rsa.pub
 telnet gerrit.teamccp.com 29418
+git clone https://gerrit.teamccp.com/rdk/yocto_oe/layers/meta-rdk
+## If the previous command fails with a “server certificate verification failure,” the following steps will need to be performed to trust the issuer (Comodo) of the Gerrit server’s SSL certificate.
+Run the following command: 
+openssl s_client -connect gerrit.teamccp.com:443
+In the output of the openssl command, look at the last part of the issuer line. Verify it is “CN=COMODO RSA Organization Validation Secure Server CA”
+Go to https://support.comodo.com/index.php?/Default/Knowledgebase/Article/View/968/108/intermediate-ca-2-comodo-rsa-organization-validation-secure-server-ca-sha-2 and copy the contents of the “PEM” box.  Copy the whole contents including the “BEGIN/END Certificate lines”.
+Edit the /etc/ssl/certs/ca-certificates.crt file on the development laptop and paste the copied contents at the end of the file. You will need to sudo in order to edit this file.
+Run the original “git clone” command again and you should be successful.  You may be prompted for your ldap username/password at this point.
+Note that this procedure will need to be repeated if/when OS updates overwrite the /etc/ssl/certs/ca-certificates.crt
+
 wget http://commondatastorage.googleapis.com/git-repo-downloads/repo
 chmod +x repo
 vi ~/.bashrc

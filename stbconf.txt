@@ -1,75 +1,105 @@
-### Credentials Comcast ###
-
-
+### Credentials Comcast ldap user rfoster ###
 ifconfig
+install chrome
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
 sudo apt-get update
 sudo apt-get install google-chrome-stable
 sudo apt-get install git
+
 mkdir .ssh
   vi .ssh/config
+  Host gerrit.teamccp.com
+  HostName gerrit.teamccp.com
+  User rfoster
+  ##
+  
   vi .gitconfig
+  [color]
+  ui = auto
+  
+  [user]
+  name = rfoster
+  email = robert_foster@cable.comcast.com·
+
+  [gitreview]
+  username = rfoster
+
+  [review]
+  username = rfoster
+  
+  ##
+  
   vi  /home/stbadmin/.netrc
+  machine gerrit.teamccp.com login rfoster password <password>
+  machine nexus.teamccp.com machine nexus.teamccp.com
+  ##
 chmod 600 /home/stbadmin/.netrc
 ssh-keygen
+  # log into https://gerrit.teamccp.com/
+  # select name-> settings -> ssh public keys
 cat /home/stbadmin/.ssh/id_rsa.pub
+  # copy and add to ssh public keys
+
+# try  
 telnet gerrit.teamccp.com 29418
 git clone https://gerrit.teamccp.com/rdk/yocto_oe/layers/meta-rdk
-## If the previous command fails with a “server certificate verification failure,” the following steps will need to be performed to trust the issuer (Comodo) of the Gerrit server’s SSL certificate.
-Run the following command: 
-openssl s_client -connect gerrit.teamccp.com:443
-In the output of the openssl command, look at the last part of the issuer line. Verify it is “CN=COMODO RSA Organization Validation Secure Server CA”
-Go to https://support.comodo.com/index.php?/Default/Knowledgebase/Article/View/968/108/intermediate-ca-2-comodo-rsa-organization-validation-secure-server-ca-sha-2 and copy the contents of the “PEM” box.  Copy the whole contents including the “BEGIN/END Certificate lines”.
-Edit the /etc/ssl/certs/ca-certificates.crt file on the development laptop and paste the copied contents at the end of the file. You will need to sudo in order to edit this file.
-Run the original “git clone” command again and you should be successful.  You may be prompted for your ldap username/password at this point.
-Note that this procedure will need to be repeated if/when OS updates overwrite the /etc/ssl/certs/ca-certificates.crt
 
-wget http://commondatastorage.googleapis.com/git-repo-downloads/repo
-chmod +x repo
-vi ~/.bashrc
-source ~/.bashrc
+## If the previous command fails with a “server certificate verification failure,” the following steps will need to be performed to
+## trust the issuer (Comodo) of the Gerrit server’s SSL certificate. Run the following command: 
+openssl s_client -connect gerrit.teamccp.com:443
+## In the output of the openssl command, look at the last part of the issuer line. Verify it is “CN=COMODO RSA Organization Validation Secure Server CA”
+## Go to https://support.comodo.com/index.php?/Default/Knowledgebase/Article/View/968/108/intermediate-ca-2-comodo-rsa-organization-validation-secure-server-ca-sha-2 and copy the contents of the “PEM” box.  
+## Copy the whole contents including the “BEGIN/END Certificate lines”.
+## Edit the /etc/ssl/certs/ca-certificates.crt file on the development laptop and paste the copied contents at the end of the file. You will need to sudo in order to edit this file.
+sudo vi cat /home/stbadmin/.ssh/id_rsa.pub
+## paste PEM at the end
+## Run the original “git clone” command again and you should be successful.  You may be prompted for your ldap username/password at 
+## Note that this procedure will need to be repeated if/when OS updates overwrite the /etc/ssl/certs/ca-certificates.crt
+
+## install repo
+mkdinr ~/bin
+curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+chmod a+x ~/bin/repo
+echo "alias repo='~/bin/repo'" > ~/.bashrc
+alias repo=~/bin/repo
+
 sudo apt-get install openjdk-7-jre
 sudo updatedb
 locate java-7-openjdk-amd64
 scp kcalligan@10.0.0.176:/home/kcalligan/nexus.teamccp.com.cer .
-#nexus.teamccp.com.cer
+## download nexus.teamccp.com.cer
 https://www.teamccp.com/confluence/download/attachments/55199093/nexus.teamccp.com.cer?version=1@modificationDate=1367293485000
-
-
 export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64/
-source ~/.bashrc
 sudo chmod 644 $JAVA_HOME/jre/lib/security/cacerts
-#14.05
+alias python=python2.7
+
+# 14.05
 sudo keytool -import -alias nexus.teamccp.com -file nexus.teamccp.com.cer -keystore $JAVA_HOME/jre/lib/security/cacerts
 # if error
 sudo keytool -delete -noprompt -alias nexus.teamccp.com -keystore $JAVA_HOME/jre/lib/security/cacerts
-#15.05/10
+# 15.05/10
 sudo keytool -importcert -noprompt -file "nexus.teamccp.com.cer" -alias nexus.teamccp.com -destkeystore /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/security/cacerts
-sudo apt-get install make gcc g++ diffstat texinfo chrpath gcc-multilib git gawk build-essential autoconf libtool libncurses-dev gettext gperf lib32z1 libc6-i386 g++-multilib python-git
+
+# install
+sudo apt-get install make gcc g++ diffstat texinfo chrpath gcc-multilib git gawk build-essential autoconf libtool libncurses-dev gettext gperf lib32z1 libc6-i386 g++-multilib python-git vim
+
+# optional 
+## start ssh session
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa
+
+# XG2V2
 mkdir mkdir xg2v2
 pushd xg2v2
 alias repo='/home/stbadmin/repo'
 repo init -u https://gerrit.teamccp.com/rdk/yocto_oe/manifests/samsung-bcm-manifest -b master -m samsungxg2v2.xml -g all
 repo sync
 
-## install repo
-
-mkdinr ~/bin
-curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
-chmod a+x ~/bin/repo
-echo "alias repo='~/bin/repo'" > ~/.bashrc
-
-## start ssh session
 ## Note, the home dir must not be encrypted so that long tmp file names are supported
 
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_rsa
-
-sudo keytool -importcert -noprompt -file "nexus.teamccp.com.cer" -alias nexus.teamccp.com -destkeystore /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/security/cacerts
 ## init & sync ##
 ## XG2V2
-
 mkdir xg2v2
 pushd xg2v2
 repo init -u https://gerrit.teamccp.com/rdk/yocto_oe/manifests/samsung-bcm-manifest -b master -m samsungxg2v2.xml -g all

@@ -13,7 +13,6 @@ sudo apt-get install curl
 sudo apt-get install openjdk-7-jre
 sudo apt-get install vim
 sudo apt-get install libqt4-dev libqt4-core libqt4-xml libqt4-opengl
-sudo apt-get install openssh-server tkdiff sqlite3 npm smlnj
 sudo apt-get install cryptmount
 sudo apt-get install vim
 sudo apt-get install nodejs nodejs-legacy npm libjs-angularjs

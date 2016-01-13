@@ -32,6 +32,8 @@ source ~/.bashrc
 sudo chmod 644 $JAVA_HOME/jre/lib/security/cacerts
 #14.05
 sudo keytool -import -alias nexus.teamccp.com -file nexus.teamccp.com.cer -keystore $JAVA_HOME/jre/lib/security/cacerts
+# if error
+sudo keytool -delete -noprompt -alias nexus.teamccp.com -keystore $JAVA_HOME/jre/lib/security/cacerts
 #15.05/10
 sudo keytool -importcert -noprompt -file "nexus.teamccp.com.cer" -alias nexus.teamccp.com -destkeystore /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/security/cacerts
 sudo apt-get install make gcc g++ diffstat texinfo chrpath gcc-multilib git gawk build-essential autoconf libtool libncurses-dev gettext gperf lib32z1 libc6-i386 g++-multilib python-git

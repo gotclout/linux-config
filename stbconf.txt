@@ -144,8 +144,9 @@ bitbake busybox -c cleanall -f
 
 
 git clone https://gerrit.teamccp.com/rdk/yocto_oe/manifests/pace-bcm-manifest
+cd pace-bcm-manifest
 git tag -l "PXD01ANI*"
-
+cd ..
 repo init -u https://gerrit.teamccp.com/rdk/yocto_oe/manifests/pace-bcm-manifest -b refs/tags/PXD01ANI_2.2.0.2.1 -m pacexid.xml -g all
 repo sync
 repo init -u https://gerrit.teamccp.com/rdk/yocto_oe/manifests/pace-bcm-manifest -b refs/tags/PXD01ANI_2.2.0.3.3 -m pacexid.xml -g all

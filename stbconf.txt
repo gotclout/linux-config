@@ -152,5 +152,6 @@ repo sync
 repo init -u https://gerrit.teamccp.com/rdk/yocto_oe/manifests/pace-bcm-manifest -b refs/tags/PXD01ANI_2.2.0.3.3 -m pacexid.xml -g all
 repo sync
 vi meta-rdk-comcast/recipes-qt/xre-receiver/xre-receiver-default_git.bb # insert hdmicec to DEPENDS
-source meta-rdk/setup-environment # choose option  for pacexid.xml
+alias python=/usr/bin/python2 #if not set
+source meta-rdk/setup-environment # choose option 11 for pacexid.xml
 bitbake comcast-mediaclient-vbn-image

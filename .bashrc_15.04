@@ -53,6 +53,9 @@ if [ -x /usr/bin/dircolors ]; then
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
+alias ls='ls --color'
+LS_COLORS='di=1:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=1;32:*.rpm=90'
+export LS_COLORS
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
@@ -173,7 +176,7 @@ alias fkill='kill -9'
 
 # open files
 alias mbash='gvim ~/.bashrc'
-alias tip='vim ~/Documents/text/linuxtips.txt'
+alias tip='vim ~/Documents/tips.txt'
 
 alias vi='/usr/bin/vim'
 alias vmm='virt-manager'
@@ -275,3 +278,4 @@ alias gcc484='/home/stbadmin/Downloads/gcc-4.8.4/host-x86_64-unknown-linux-gnu/g
 alias g++484='/home/stbadmin/Downloads/gcc-4.8.4/host-x86_64-unknown-linux-gnu/gcc/xg++'
 #alias gcc='/home/stbadmin/Downloads/gcc-4.8.4/host-x86_64-unknown-linux-gnu/gcc/xgcc'
 #alias g++='/home/stbadmin/Downloads/gcc-4.8.4/host-x86_64-unknown-linux-gnu/gcc/xg++'
+

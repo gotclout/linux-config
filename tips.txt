@@ -507,3 +507,6 @@ curl -X POST 192.168.122.20:8181/controller/configure
 
 version info
 uname -a
+
+unalias gcc g++
+unset CC CXX

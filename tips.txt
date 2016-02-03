@@ -23,6 +23,9 @@ global path editing /etc/path
 global environment editing /etc/bashrc
 
 password protect directory make an .htaccess file AuthUserFile /your/directory/here/.htpasswdAuthGroupFile /dev/nullAuthName "Secure Document"AuthType Basic<LIMIT
+redirect stdin & stderr
+cmd >> file 2>&1
+
 
 GET PUT POST>require user username</LIMIT>use htpasswd ­c .htpasswd username to set or change pwdchmod 755 .htpasswd .htaccess
 

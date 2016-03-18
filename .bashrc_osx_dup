@@ -138,7 +138,7 @@ XSB_HOME=/home/rfoster/repository-manager/XSB/bin
 CLASSPATH=.
 #GCC_PATH=
 
-LD_LIBRARY_PATH=/lib:/lib64:/usr/lib:/etc/libvirt:$BOWER_HOME/lib
+DYLD_LIBRARY_PATH=/lib:/lib64:/usr/lib:/etc/libvirt:$BOWER_HOME/lib
 PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/lib/x86_64-linux-gnu
 
 # shortcuts
@@ -162,9 +162,6 @@ alias doc="pushd $MHOME/Documents"
 alias pscp="pushd $MHOME/SCP-2.16.0"
 alias pdf='gnome-open'
 alias cvm="$MHOME/Utils/scripts/clonevm.sh"
-alias gti="$MHOME/Utils/scripts/gtinstall.sh"
-alias eni="$MHOME/Utils/scripts/etlinstall.sh"
-alias pdi="$MHOME/Utils/scripts/pdinstall.sh"
 
 # search
 alias grip='grep -irl'

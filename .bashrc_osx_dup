@@ -1,0 +1,286 @@
+# ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
+
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+# formate date time
+export HISTTIMEFORMAT="%m:%d:20%y:%T "
+
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# If set, the pattern "**" used in a pathname expansion context will
+# match all files and zero or more directories and subdirectories.
+#shopt -s globstar
+
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+# set variable identifying the chroot you work in (used in the prompt below)
+if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
+
+# set a fancy prompt (non-color, unless we know we "want" color)
+case "$TERM" in
+    xterm-color) color_prompt=yes;;
+esac
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls -G'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+alias ls='ls -G'
+LS_COLORS='di=1;34:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=1;32:*.rpm=90'
+export LS_COLORS
+
+# uncomment for a colored prompt, if the terminal has the capability; turned
+# off by default to not distract the user: the focus in a terminal window
+# should be on the output of commands, not on the prompt
+#force_color_prompt=yes
+
+if [ -n "$force_color_prompt" ]; then
+    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+	# We have color support; assume it's compliant with Ecma-48
+	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+	# a case would tend to support setf rather than setaf.)
+	color_prompt=yes
+    else
+	color_prompt=
+    fi
+fi
+
+if [ "$color_prompt" = yes ]; then
+#    PS1='[${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$]\n>> '
+#    PS1='[${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u \w\[\033[00m\]]\n>> '
+    PS1='[${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u :\[\033[01;34m\]\w\[\033[00m\]]\n>> '
+else
+    #PS1='[${debian_chroot:+($debian_chroot)}\u \w]\n>> '
+    PS1='[${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u :\[\033[01;34m\]\w\[\033[00m\]]\n>> '
+    #PS1='[${debian_chroot:+($debian_chroot)}\u@\h:\w\$:]\n>> '
+fi
+unset color_prompt force_color_prompt
+
+# If this is an xterm set the title to user@host:dir
+case "$TERM" in
+xterm*|rxvt*)
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u \w\a\]$PS1"
+    ;;
+*)
+    ;;
+esac
+
+# reset
+#PS1='${debian_chroot:+($debian_chroot)}\u >> '
+
+# colored GCC warnings and errors
+#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+# some more ls aliases
+alias ll='ls -alFhtr'
+alias la='ls -A'
+alias l='ls -CF'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+
+# ENV
+MHOME=/home/rfoster
+
+BOWER_HOME=$MHOME/Utils/node_modules/bower
+PATH=$PATH:/usr/share:$BOWER_HOME/bin:$MHOME/Utils/scripts:$MHOME/bin
+JAVA_HOME=/usr/bin:/usr/lib/jvm/java-7-openjdk-amd64
+XSB_HOME=/home/rfoster/repository-manager/XSB/bin
+CLASSPATH=.
+#GCC_PATH=
+
+LD_LIBRARY_PATH=/lib:/lib64:/usr/lib:/etc/libvirt:$BOWER_HOME/lib
+PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/lib/x86_64-linux-gnu
+
+# shortcuts
+alias mtar='tar -czvf'
+alias utar='tar -xzvf'
+alias mtarb='tar -cjvf'
+alias utarb='tar -xjvf'
+alias drm='rm -rf'
+alias dcp='cp -rf'
+
+alias cllog='rm *.log'
+alias clean='rm *.o'
+
+alias dev="pushd $MHOME/Dev"
+alias gts="pushd $MHOME/src/grotesquestorm"
+alias gum="pushd $MHOME/Dev/gumball"
+alias exs="pushd $MHOME/Dev/examplesensor"
+alias fatpd="pushd $MHOME/Dev/purpledinosaur-fat"
+alias scripts="pushd $MHOME/Utils/scripts"
+alias doc="pushd $MHOME/Documents"
+alias pscp="pushd $MHOME/SCP-2.16.0"
+alias pdf='gnome-open'
+alias cvm="$MHOME/Utils/scripts/clonevm.sh"
+alias gti="$MHOME/Utils/scripts/gtinstall.sh"
+alias eni="$MHOME/Utils/scripts/etlinstall.sh"
+alias pdi="$MHOME/Utils/scripts/pdinstall.sh"
+
+# search
+alias grip='grep -irl'
+alias ngrep='grep -irn'
+alias ifnd='find . -iname'
+alias nfnd='find . -name'
+alias utls='cd $MHOME/Utils'
+alias fkill='kill -9'
+
+# open files
+alias mbash='gvim ~/.bashrc'
+alias tip='vim ~/Documents/tips.txt'
+
+alias vi='/usr/bin/vim'
+alias vmm='virt-manager'
+alias vms='sudo virsh start'
+
+alias vmsa='for hn in A B C D E F G H ; do sudo virsh start Cent6$hn ; done'
+
+alias vmk='sudo virsh shutdown'
+alias diff='tkdiff'
+alias python3='python3.4'
+alias python2='/usr/bin/python'
+alias python='python2'
+
+# TODO: alias bower=''
+alias iconf='ifconfig | grep "inet addr:"'
+
+# git TODO
+export GIT_HOME=10.2.98.44
+alias gclone="git clone git@$GIT_HOME:"
+alias gitpb='git push -u origin'
+alias gitgui='git gui&'
+alias gitk='gitk &'
+alias gitka='gitk --a &'
+alias gitkh='gitk cmommit history &'
+alias gitdiff='git difftool -y'
+
+# launch crome from terminal ignore output
+#alias chrome='/usr/bin/google-chrome-beta &>/dev/null &'
+alias chrome='google-chrome-stable'
+
+# permissions
+alias amsk='chmod 755 -R' # rwx rx
+alias wmsk='chmod 766 -R' # rwx rw
+alias rmsk='chmod 744 -R' # rwx r
+alias fmsk='chmod 644 -R' # rw  r
+
+# mount encrypted drives
+#alias mmnt='$MHOME/Utils/scripts/mmnt.sh'
+#alias umnt='$MHOME/Utils/scripts/umnt.sh'
+
+# source bash rc and updatedb for mlocate
+alias abash='source $MHOME/.bashrc'
+alias udb='sudo updatedb'
+
+# change to root user
+alias sroot='sudo su - root'
+alias root='su rfoster'
+
+# mount encrypted drives on start
+#$MHOME/Utils/scripts/mmnt.sh
+
+# ssh
+alias sci='ssh-copy-id'
+
+# TODO map mac addr to ip via virtsetup
+# Then gen aliases for for hn in A B C D E F G H ; do alias sshc$hn='
+alias sshca='ssh root@192.168.122.20'
+alias sshcb='ssh root@192.168.122.21'
+alias sshcc='ssh root@192.168.122.22'
+alias sshcd='ssh root@192.168.122.23'
+alias sshce='ssh root@192.168.122.24'
+alias sshcf='ssh root@192.168.122.25'
+alias sshcg='ssh root@192.168.122.26'
+alias sshch='ssh root@192.168.122.27'
+#alias sshcbase='ssh root@192.168.122.216'
+
+# make
+alias amake='make clean; make develop; make all; make jenkins'
+alias etlmake='make clean-cache; make etl_node'
+alias remake='make clean; make all; make jenkins'
+alias tmake='make clean; make jenkins && gti'
+
+# libvirt virsh virtmanager
+alias vmrvt='for hn in A B C D E F G H ; do sudo virsh snapshot-revert --domain Cent6$hn ssvm; done'
+alias vmka='for hn in A B C D E F G H ; do sudo virsh shutdown Cent6$hn; done'
+
+#gitk --a #all branch history
+#gitk commit history
+
+# vmw 
+alias pext='pushd /media/rfoster/dskext'
+
+# GCC
+alias gcc5='/usr/bin/gcc'
+alias gcc4='/usr/bin/gcc-4.9'
+alias gcc4='/usr/bin/gcc-4.8'
+alias g++5='/usr/bin/g++'
+alias g++4='/usr/bin/g++-4.8'
+alias g++='/usr/bin/g++'
+alias gcc='/usr/bin/gcc'
+
+# whitecryption
+alias wcconf='export CC=$MHOME/SCP-2.16.0/scp-unix-gcc; export CXX=$MHOME/SCP-2.16.0/scp-unix-g++; echo CC: $CC && echo CXX: $CXX && echo'
+alias cwcconf="export CC=$MHOME/SCP-2.15.1/scp-custom-gcc; export CXX=$MHOME/SCP-2.16.0/scp-custom-g++; echo CC: $CC && echo CXX: $CXX && echo &&"
+alias rscp="$MHOME/SCP-2.16.0/scp &"
+alias rscpa="$MHOME/SCP-2.16.0/scp-tool --analyze"
+alias rscpp="$MHOME/SCP-2.16.0/scp-tool --build-profiling"
+
+# comcast
+alias pxinit='repo init -u https://gerrit.teamccp.com/rdk/yocto_oe/manifests/pace-bcm-manifest -b stable2 -m pacexid.xml -g all && repo sync'
+alias gcc484='/home/rfoster/Downloads/gcc-4.8.4/host-x86_64-unknown-linux-gnu/gcc/xgcc'
+alias g++484='/home/rfoster/Downloads/gcc-4.8.4/host-x86_64-unknown-linux-gnu/gcc/xg++'
+#alias gcc='/home/rfoster/Downloads/gcc-4.8.4/host-x86_64-unknown-linux-gnu/gcc/xgcc'
+#alias g++='/home/rfoster/Downloads/gcc-4.8.4/host-x86_64-unknown-linux-gnu/gcc/xg++'
+
+# cyberpoint
+alias vpn='sudo /sbin/modprobe tun && sudo openconnect vpn.cyberpointllc.com'

@@ -231,18 +231,6 @@ alias root='su rfoster'
 # ssh
 alias sci='ssh-copy-id'
 
-# TODO map mac addr to ip via virtsetup
-# Then gen aliases for for hn in A B C D E F G H ; do alias sshc$hn='
-alias sshca='ssh root@192.168.122.20'
-alias sshcb='ssh root@192.168.122.21'
-alias sshcc='ssh root@192.168.122.22'
-alias sshcd='ssh root@192.168.122.23'
-alias sshce='ssh root@192.168.122.24'
-alias sshcf='ssh root@192.168.122.25'
-alias sshcg='ssh root@192.168.122.26'
-alias sshch='ssh root@192.168.122.27'
-#alias sshcbase='ssh root@192.168.122.216'
-
 # make
 alias amake='make clean; make develop; make all; make jenkins'
 alias etlmake='make clean-cache; make etl_node'
@@ -260,27 +248,5 @@ alias vmka='for hn in A B C D E F G H ; do sudo virsh shutdown Cent6$hn; done'
 alias pext='pushd /media/rfoster/dskext'
 
 # GCC
-alias gcc5='/usr/bin/gcc'
-alias gcc4='/usr/bin/gcc-4.9'
-alias gcc4='/usr/bin/gcc-4.8'
-alias g++5='/usr/bin/g++'
-alias g++4='/usr/bin/g++-4.8'
 alias g++='/usr/bin/g++'
 alias gcc='/usr/bin/gcc'
-
-# whitecryption
-alias wcconf='export CC=$MHOME/SCP-2.16.0/scp-unix-gcc; export CXX=$MHOME/SCP-2.16.0/scp-unix-g++; echo CC: $CC && echo CXX: $CXX && echo'
-alias cwcconf="export CC=$MHOME/SCP-2.15.1/scp-custom-gcc; export CXX=$MHOME/SCP-2.16.0/scp-custom-g++; echo CC: $CC && echo CXX: $CXX && echo &&"
-alias rscp="$MHOME/SCP-2.16.0/scp &"
-alias rscpa="$MHOME/SCP-2.16.0/scp-tool --analyze"
-alias rscpp="$MHOME/SCP-2.16.0/scp-tool --build-profiling"
-
-# comcast
-alias pxinit='repo init -u https://gerrit.teamccp.com/rdk/yocto_oe/manifests/pace-bcm-manifest -b stable2 -m pacexid.xml -g all && repo sync'
-alias gcc484='/home/rfoster/Downloads/gcc-4.8.4/host-x86_64-unknown-linux-gnu/gcc/xgcc'
-alias g++484='/home/rfoster/Downloads/gcc-4.8.4/host-x86_64-unknown-linux-gnu/gcc/xg++'
-#alias gcc='/home/rfoster/Downloads/gcc-4.8.4/host-x86_64-unknown-linux-gnu/gcc/xgcc'
-#alias g++='/home/rfoster/Downloads/gcc-4.8.4/host-x86_64-unknown-linux-gnu/gcc/xg++'
-
-# cyberpoint
-alias vpn='sudo /sbin/modprobe tun && sudo openconnect vpn.cyberpointllc.com'

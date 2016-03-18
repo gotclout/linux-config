@@ -46,9 +46,6 @@ esac
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls -G'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
@@ -74,13 +71,9 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-#    PS1='[${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$]\n>> '
-#    PS1='[${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u \w\[\033[00m\]]\n>> '
     PS1='[${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u :\[\033[01;34m\]\w\[\033[00m\]]\n>> '
 else
-    #PS1='[${debian_chroot:+($debian_chroot)}\u \w]\n>> '
     PS1='[${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u :\[\033[01;34m\]\w\[\033[00m\]]\n>> '
-    #PS1='[${debian_chroot:+($debian_chroot)}\u@\h:\w\$:]\n>> '
 fi
 unset color_prompt force_color_prompt
 
@@ -136,7 +129,6 @@ PATH=$PATH:/usr/share:$BOWER_HOME/bin:$MHOME/Utils/scripts:$MHOME/bin
 JAVA_HOME=/usr/bin:/usr/lib/jvm/java-7-openjdk-amd64
 XSB_HOME=/home/rfoster/repository-manager/XSB/bin
 CLASSPATH=.
-#GCC_PATH=
 
 DYLD_LIBRARY_PATH=/lib:/lib64:/usr/lib:/etc/libvirt:$BOWER_HOME/lib
 PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/lib/x86_64-linux-gnu
@@ -153,10 +145,6 @@ alias cllog='rm *.log'
 alias clean='rm *.o'
 
 alias dev="pushd $MHOME/Dev"
-alias gts="pushd $MHOME/src/grotesquestorm"
-alias gum="pushd $MHOME/Dev/gumball"
-alias exs="pushd $MHOME/Dev/examplesensor"
-alias fatpd="pushd $MHOME/Dev/purpledinosaur-fat"
 alias scripts="pushd $MHOME/Utils/scripts"
 alias doc="pushd $MHOME/Documents"
 alias pscp="pushd $MHOME/SCP-2.16.0"
@@ -229,8 +217,6 @@ alias root='su rfoster'
 alias sci='ssh-copy-id'
 
 # make
-alias amake='make clean; make develop; make all; make jenkins'
-alias etlmake='make clean-cache; make etl_node'
 alias remake='make clean; make all; make jenkins'
 alias tmake='make clean; make jenkins && gti'
 

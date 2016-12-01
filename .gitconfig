@@ -1,1 +1,22 @@
+[user]
+  name = Robert Foster
+  email = rfoster@sdlgov.com
+[core]
+  autocrlf = false
+  excludesfile = /Users/rfoster/gitignore_global.txt
+  safecrlf = false
+[status]
+  showuntrackedfiles = all 
+[color]
+  ui = auto
+[push]
+  default = matching
+[http]
+  postBuffer = 1334567890
+[merge]
+  tool = meld
+[diff]
+  tool = tkdiff
+[difftool]
+  prompt = false
 

@@ -523,3 +523,6 @@ change password
 passwd
 Get Os version info
 cat /etc/*-release
+
+list users  cut -d: -f1 /etc/passwd
+remove user userdel user

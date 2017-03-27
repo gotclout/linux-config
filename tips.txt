@@ -526,3 +526,6 @@ cat /etc/*-release
 
 list users  cut -d: -f1 /etc/passwd
 remove user userdel user
+
+linux distribution date realease version etc...
+ cat /etc/*-release

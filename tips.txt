@@ -529,3 +529,8 @@ remove user userdel user
 
 linux distribution date realease version etc...
  cat /etc/*-release
+ 
+ osx terminal 
+ link specific version of brew install
+ brew install protobuf250
+ brew link --force --overwrite protobuf250

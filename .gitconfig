@@ -1,22 +1,20 @@
 [user]
-  name = Robert Foster
+  name  = rfoster
   email = rfoster@sdlgov.com
-[core]
-  autocrlf = false
-  excludesfile = /Users/rfoster/gitignore_global.txt
-  safecrlf = false
-[status]
-  showuntrackedfiles = all 
-[color]
-  ui = auto
-[push]
-  default = matching
 [http]
-  postBuffer = 1334567890
+  postBuffer = 157286400
+[diff]
+  trustExitCode = true
+  prompt = false
+  tool = meld
+[difftool "meld"]
+  trustExitCode = true
+  prompt = false
+  external = C:/bin/Meld/Meld.exe "$LOCAL" "$REMOTE"
+  cmd = C:/bin/Meld/Meld.exe "$LOCAL" "$REMOTE"
 [merge]
   tool = meld
-[diff]
-  tool = tkdiff
-[difftool]
+[mergetool "meld"]
+  trustExitCode = true
   prompt = false
-
+  cmd = C:/bin/Meld/meld.exe  "$LOCAL" "$BASE" "$REMOTE" --output "$MERGED"

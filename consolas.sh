@@ -3,6 +3,7 @@
 # sudo apt-get install font-manager cabextract
 # sh consolas.sh
 # sudo cp -rf temp/* /usr/share/fonts/
+# osx brew install cabextract
 
 set -e
 set -x

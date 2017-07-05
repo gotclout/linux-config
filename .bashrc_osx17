@@ -240,3 +240,4 @@ alias g++='/usr/bin/g++'
 alias gcc='/usr/bin/gcc'
 
 alias wrk='pushd $MHOME/Development/Workspace'
+alias umnt='diskutil unmount'

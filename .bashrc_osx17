@@ -127,8 +127,8 @@ MHOME=/Users/rfoster
 BOWER_HOME=$MHOME/Utils/node_modules/bower
 PATH=$PATH:/usr/share:$BOWER_HOME/bin:$MHOME/Utils/scripts:$MHOME/bin
 # AWS
-AWS_HOME=$MHOME/Library/Python/3.6/bin
-AWS_DEFAULT_PROFILE=profilename
+export AWS_HOME=$MHOME/Library/Python/3.6/bin
+export AWS_DEFAULT_PROFILE=profilename
 PATH=$PATH:$AWS_HOME
 JAVA_HOME=/usr/bin:/usr/lib/jvm/java-7-openjdk-amd64
 XSB_HOME=/home/rfoster/repository-manager/XSB/bin

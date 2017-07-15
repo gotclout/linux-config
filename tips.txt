@@ -457,7 +457,11 @@ git branch -D rfoster-exif
 git branch rfoster_etl_node_manager
 # create this branch
 git branch -f rfoster_etl_node_manager 
+git checkout rfostre_etl_node_manager
 # force create this branch
+# check and modify for initial commit then use
+git push --set-upstream origin rfoster_etl_node_manager
+# this will add the new branch to the upstream/parent branch
 git commit -m "Comments"
 git commit --all
 git add simple_waves.jpg
@@ -534,3 +538,8 @@ linux distribution date realease version etc...
  link specific version of brew install
  brew install protobuf250
  brew link --force --overwrite protobuf250
+
+ python 3.6
+ python3 -m venv
+ earlier
+ pyvenv

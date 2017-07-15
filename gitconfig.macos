@@ -1,0 +1,20 @@
+[user]
+  name  = 
+  email = 
+[http]
+  postBuffer = 157286400
+[diff]
+  trustExitCode = true
+  prompt = false
+  tool = meld
+[difftool "meld"]
+  trustExitCode = true
+  prompt = false
+  external = meld "$LOCAL" "$REMOTE"
+  cmd = meld "$LOCAL" "$REMOTE"
+[merge]
+  tool = meld
+[mergetool "meld"]
+  trustExitCode = true
+  prompt = false
+  cmd = meld  "$LOCAL" "$BASE" "$REMOTE" --output "$MERGED"

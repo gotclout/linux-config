@@ -246,3 +246,4 @@ alias gcc='/usr/bin/gcc'
 
 alias wrk='pushd $MHOME/Development/Workspace'
 alias umnt='diskutil unmount'
+alias sshdf='ssh -i ~/.ssh/dev-util-stansberryterminal.pem ec2-user@ec2-174-129-144-17.   compute-1.amazonaws.com'

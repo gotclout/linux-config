@@ -543,3 +543,16 @@ linux distribution date realease version etc...
  python3 -m venv
  earlier
  pyvenv
+ 
+ PYTHONPATH=.:../: #etc...
+ 
+ssh keep alive
+Global Configuration
+Add the following line to the /etc/ssh/ssh_config file:
+Host *
+    ServerAliveInterval 30
+
+Current User Configuration
+Add the following lines to the ~/.ssh/config file (create if it doesn’t exist)
+Host *
+    ServerAliveInterval 60

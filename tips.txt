@@ -343,7 +343,13 @@ add user with root access
 give user admin priv
 sudo adduser stbadmin sudo
 visudo add line with root but replace with username
-
+#add group and add existing user to group
+# create group devadmin
+sudo groupadd devadmin
+# rfoster to devadmin group and root
+sudo usermod -a -G  root,devadmin rfoster
+change owner and group recurssive
+chown rfoster:devadmin -R ./
 change owner recurssive
  chown rfoster. -R ./
 
@@ -451,6 +457,11 @@ git push -u origin exif
 git gui&
 gitk &
 
+#git diff against branch
+#git diff <current> <target> -- myfile.cs
+git diff dev master -- readme.txt
+  or
+git diff dev..master -- readme.txt
 
 git branch -D rfoster-exif
 # Delete a branch irrespective of its merged status.
@@ -563,3 +574,4 @@ note exit and login to verify
 
 repeat last command
 !!
+

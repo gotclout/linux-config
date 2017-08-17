@@ -560,3 +560,6 @@ Host *
 purge clear erase all history
   cat /dev/null > ~/.bash_history && history -c && exit
 note exit and login to verify
+
+repeat last command
+!!

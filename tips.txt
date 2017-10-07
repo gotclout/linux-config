@@ -1,13 +1,13 @@
 rm­-rf directory_name ­ removes non empty directories
 
-vim line numbering 
+vim line numbering
 
 :set number
 :set nu
 :set nonumber
 :set nonu
 
-ld .o file linkerin vi­vim : set nu shw line numbers set nonumber du 
+ld .o file linkerin vi­vim : set nu shw line numbers set nonumber du
 sh (optional file/dir name) show disk usagecp ­rf directory copies non empty dir
 
 pwd print working directory
@@ -425,7 +425,7 @@ clone vm -- clone created in working directory if pool exists
 sudo virt-clone --force --connect qemu:///system --original cent1 --name cent1c --file cent1c.img
 
 add key to host
-ssh-copy-id 
+ssh-copy-id
 
 symbolic link
 ls -s existing file link file
@@ -434,7 +434,7 @@ unlink link file
 
 list open ports
 nmap -sT -O localhost
-netstat -e -l 
+netstat -e -l
 lsof | grep port
 info for ip/port request
 curl ip:port
@@ -442,7 +442,7 @@ curl ip:port
 git commit -m"Fix typo in introduction to user guide"
 
 git clone 127.0.0.1:grotesquestorm/grotesquestorm.git
-ip for url 
+ip for url
 nslookup www.ex.com
 
 file-roller target
@@ -456,7 +456,7 @@ git branch -D rfoster-exif
 # Delete a branch irrespective of its merged status.
 git branch rfoster_etl_node_manager
 # create this branch
-git branch -f rfoster_etl_node_manager 
+git branch -f rfoster_etl_node_manager
 git checkout rfostre_etl_node_manager
 # force create this branch
 # check and modify for initial commit then use
@@ -533,8 +533,8 @@ remove user userdel user
 
 linux distribution date realease version etc...
  cat /etc/*-release
- 
- osx terminal 
+
+ osx terminal
  link specific version of brew install
  brew install protobuf250
  brew link --force --overwrite protobuf250
@@ -545,3 +545,35 @@ linux distribution date realease version etc...
  pyvenv
 
 command loop while sleep 5; do ls -la  .; done
+#add group and add existing user to group		 +
+ # create group devadmin
+ sudo groupadd devadmin
+ # rfoster to devadmin group and root
+ sudo usermod -a -G  root,devadmin rfoster
+ change owner and group recurssive
+ chown rfoster:devadmin -R ./
+ #git diff against branch
+ #git diff <current> <target> -- myfile.cs
+ git diff dev master -- readme.txt
+   or
+ git diff dev..master -- readme.txt
+
+  PYTHONPATH=.:../: #etc...
+
+ ssh keep alive
+ Global Configuration
+ Add the following line to the /etc/ssh/ssh_config file:
+ Host *
+     ServerAliveInterval 30
+
+ Current User Configuration
+ Add the following lines to the ~/.ssh/config file (create if it doesn’t exist)
+ Host *
+     ServerAliveInterval 60
+
+ purge clear erase all history
+   cat /dev/null > ~/.bash_history && history -c && exit
+ note exit and login to verify
+
+ repeat last command
+ !!

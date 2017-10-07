@@ -343,13 +343,7 @@ add user with root access
 give user admin priv
 sudo adduser stbadmin sudo
 visudo add line with root but replace with username
-#add group and add existing user to group
-# create group devadmin
-sudo groupadd devadmin
-# rfoster to devadmin group and root
-sudo usermod -a -G  root,devadmin rfoster
-change owner and group recurssive
-chown rfoster:devadmin -R ./
+
 change owner recurssive
  chown rfoster. -R ./
 
@@ -441,7 +435,7 @@ unlink link file
 list open ports
 nmap -sT -O localhost
 netstat -e -l 
-
+lsof | grep port
 info for ip/port request
 curl ip:port
 
@@ -457,11 +451,6 @@ git push -u origin exif
 git gui&
 gitk &
 
-#git diff against branch
-#git diff <current> <target> -- myfile.cs
-git diff dev master -- readme.txt
-  or
-git diff dev..master -- readme.txt
 
 git branch -D rfoster-exif
 # Delete a branch irrespective of its merged status.
@@ -551,27 +540,8 @@ linux distribution date realease version etc...
  brew link --force --overwrite protobuf250
 
  python 3.6
- python3 -m venv
+ python3 -m venv ./venv
  earlier
  pyvenv
- 
- PYTHONPATH=.:../: #etc...
- 
-ssh keep alive
-Global Configuration
-Add the following line to the /etc/ssh/ssh_config file:
-Host *
-    ServerAliveInterval 30
 
-Current User Configuration
-Add the following lines to the ~/.ssh/config file (create if it doesn’t exist)
-Host *
-    ServerAliveInterval 60
-    
-purge clear erase all history
-  cat /dev/null > ~/.bash_history && history -c && exit
-note exit and login to verify
-
-repeat last command
-!!
-
+command loop while sleep 5; do ls -la  .; done

@@ -129,24 +129,28 @@ fi
 # ENV
 MHOME=/Users/rfoster
 
-BOWER_HOME=$MHOME/Utils/node_modules/bower
-PATH=$PATH:/usr/share:$BOWER_HOME/bin:$MHOME/Utils/scripts:$MHOME/bin
+#BOWER_HOME=$MHOME/Utils/node_modules/bower
+PATH=$PATH:/usr/share:$MHOME/Utils/scripts:$MHOME/bin
+#PATH=$PATH:/usr/share:$BOWER_HOME/bin:$MHOME/Utils/scripts:$MHOME/bin
 # AWS
 export AWS_HOME=$MHOME/Library/Python/3.6/bin
 export AWS_DEFAULT_PROFILE=profilename
-PATH=$PATH:$AWS_HOME
+PATH=/usr/local/Cellar/python3/3.6.1/bin:$AWS_HOME:$PATH
 JAVA_HOME=/usr/bin:/usr/lib/jvm/java-7-openjdk-amd64
-XSB_HOME=/home/rfoster/repository-manager/XSB/bin
+XSB_HOME=/home/rfoster/development/workspace/repository-manager/XSB/bin
 CLASSPATH=.
 
-DYLD_LIBRARY_PATH=/lib:/lib64:/usr/lib:/etc/libvirt:$BOWER_HOME/lib
+DYLD_LIBRARY_PATH=/usr/lib:/usr/local/lib
 PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/lib/x86_64-linux-gnu
 
 # Python path env
 export PYTHONPATH=.
 alias python2='/usr/bin/python'
-alias python='python3'
-alias pip='pip3'
+#alias python='python3'
+alias python='/usr/local/Cellar/python3/3.6.1/bin/python3.6'
+alias python3='python'
+#alias pip='pip3'
+alias pip='/usr/local/Cellar/python3/3.6.1/bin/pip3.6'
 alias pythonc='python -m py_compile' # compile only
 
 # shortcuts
@@ -154,8 +158,8 @@ alias mtar='tar -czvf'
 alias utar='tar -xzvf'
 alias mtarb='tar -cjvf'
 alias utarb='tar -xjvf'
-alias drm='rm -rf'
-alias dcp='cp -rf'
+alias drm='sudo rm -Rf'
+alias dcp='cp -Rf'
 
 alias cllog='rm *.log'
 alias clean='rm *.o'
@@ -200,6 +204,9 @@ alias gitk='gitk &'
 alias gitka='gitk --a &'
 alias gitkh='gitk cmommit history &'
 alias gitdiff='git difftool -y'
+alias gitup='git fetch && git pull --rebase'
+alias gitlsm='git ls-files -m'
+alias gitmd='git merge dev'
 
 # launch crome from terminal ignore output
 #alias chrome='/usr/bin/google-chrome-beta &>/dev/null &'
@@ -251,19 +258,29 @@ alias gcc='/usr/bin/gcc'
 
 alias wrk='pushd $MHOME/development/workspace'
 alias sbt='wrk; pushd Stansberry-Terminal-Prototype'
+alias mk1='wrk; pushd Stansberry-Terminal-MkI'
 alias sbtdf='sbt; pushd datafactory/python/datafactory'
 alias umnt='diskutil unmount'
 alias wdumnt='umnt /Volumes/PassportPart01 && umnt /Volumes/PassportPart02'
 alias preview='/Applications/Preview.app/Contents/MacOS/Preview'
 #alias sshdf='ssh -i ~/.ssh/dev-util-stansberryterminal.pem ec2-user@ec2-174-129-144-17.compute-1.amazonaws.com'
 alias sshdf='ssh -i ~/.ssh/dev-util-stansberryterminal.pem ec2-user@ec2-34-192-218-219.compute-1.amazonaws.com'
-alias sshrdf='ssh -i ~/.ssh/dev-util-stansberryterminal.pem rfoster@ec2-34-192-218-219.compute-1.amazonaws.com'
+alias sshdfp='ssh -i ~/.ssh/dev-util-stansberryterminal.pem rfoster@ec2-34-192-218-219.compute-1.amazonaws.com'
 #54.172.194.43
 alias sshcdf='ssh -i ~/.ssh/dev-util-stansberryterminal.pem rfoster@ec2-54-172-194-43.compute-1.amazonaws.com'
+#alias sshstage='ssh -i ~/.ssh/dev-util-stansberryterminal.pem rfoster@ec2-54-172-194-43.compute-1.amazonaws.com'
+alias sshstage='ssh -i ~/.ssh/dev-util-stansberryterminal.pem staging.stansberryterminal.com'
 alias sshes='ssh -i ~/.ssh/sr-phoenix-test.pem ec2-user@ec2-13-58-225-37.us-east-2.compute.amazonaws.com'
 alias ec2cdf='ssh -i ~/.ssh/dev-util-stansberryterminal.pem ec2-user@ec2-54-172-194-43.compute-1.amazonaws.com'
+alias sshci='ssh -i ~/.ssh/dev-util-stansberryterminal.pem jenkins@ec2-34-228-185-96.compute-1.amazonaws.com'
+alias sshdfd='ssh -i ~/.ssh/dev-util-stansberryterminal.pem dev.stansberryterminal.com'
+alias sshdev='ssh -i ~/.ssh/dev-util-stansberryterminal.pem dev.stansberryterminal.com'
+#alias sshqa='ssh -i ~/.ssh/dev-util-stansberryterminal.pem ec2-35-153-81-71.compute-1.amazonaws.com'
+alias sshqa='ssh -i ~/.ssh/dev-util-stansberryterminal.pem qa.stansberryterminal.com'
+alias sshprod='ssh -i ~/.ssh/dev-util-stansberryterminal.pem rfoster@prod.stansberryterminal.com'
 alias udbrew='brew update'
 
+# TODO: Remove if unused
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
 [ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash ] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash
@@ -275,12 +292,21 @@ alias udbrew='brew update'
 # this is the root folder where all globally installed node packages will  go
 export NPM_PACKAGES="/usr/local/npm_packages"
 export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
+
 # add to PATH
 export PATH="$NPM_PACKAGES/bin:$PATH"
 
+# sbt
 SBTPATH=$HOME/development/workspace/Stansberry-Terminal-Prototype
 SBTDFP=$SBTPATH/datafactory/python/datafactory
-
 export SBTPP=$SBTPATH:$SBTPATH/common:$SBTPATH/services:$SBTDFP
 
 alias sbtpypath=export PYTHONPATH=$SBTPP
+alias sshuid='ssh -i ~/.ssh/sbt-wui-qa.pem ubuntu@ec2-54-164-177-40.compute-1.amazonaws.com'
+alias sshuip='ssh -i ~/.ssh/sbt-wui-qa.pem ubuntu@ec2-52-70-236-37.compute-1.amazonaws.com'
+alias sshdfdj='ssh -i ~/.ssh/dev-util-stansberryterminal.pem jenkins@ec2-54-172-194-43.compute-1.amazonaws.com'
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+alias sshprodb='ssh -i ~/.ssh/dev-util-stansberryterminal.pem ec2-34-224-118-83.compute-1.amazonaws.com'
+alias sshproda='ssh -i ~/.ssh/dev-util-stansberryterminal.pem ec2-35-153-81-71.compute-1.amazonaws.com'
+alias gitlog='git log | vim -R -'
+alias fproc='ps -ef | grep -i'

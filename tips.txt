@@ -577,3 +577,14 @@ command loop while sleep 5; do ls -la  .; done
 
  repeat last command
  !!
+ 
+ list all users
+ cat /etc/passwd 
+
+sudo visudo modify sudoers
+
+get linux installation / version info
+cat /etc/*-release
+
+git delete dir from repo keep locally
+git rm -r <dir>

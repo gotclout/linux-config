@@ -588,3 +588,6 @@ cat /etc/*-release
 
 git delete dir from repo keep locally
 git rm -r <dir>
+
+last reboot
+who -b

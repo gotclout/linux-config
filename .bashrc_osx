@@ -1,80 +1,347 @@
-# System-wide .bashrc file for interactive bash(1) shells.
-if [ -z "$PS1" ]; then
-   return
-fi
+# ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
 
-alias ll="ls -la"
+# If not running interactively, don't do anything
+case $- in
+  *i*) ;;
+  *) return;;
+esac
 
-export PS1=">> "
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
 
-export CLASSPATH=/Library/Java/Home:/Library/Java/Home/lib:/System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Classes/classes.jar:.
+# append to the history file, don't overwrite it
+shopt -s histappend
 
-export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.6/Home
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
 
-export OC4J_JAR=/Applications/JDeveloper.app/Contents/Resources/jdev/j2ee/home/oc4j.jar
+# formate date time
+export HISTTIMEFORMAT="%m:%d:20%y:%T "
 
-###oracle
-ORACLE_SID=ORACLE
-#export ORACLE_SID
-export PATH=$PATH:/Applications/JDeveloper.app/Contents/Resources/jdev/bin/:/opt/local/lib/:/opt/local/bin/
-DYLD_LIBRARY_PATH=/opt/oracle/instantclient:/opt/local/bin/
-export DYLD_LIBRARY_PATH
-
-TNS_ADMIN=/opt/oracle/tns
-export TNS_ADMIN
-
-ORACLE_HOME=/opt/oracle/instantclient
-export ORACLE_HOME
-
-SQLPATH=/opt/oracle/instantclient
-export SQLPATH
-
-SSL_PATH=/opt/local/var/macports/software/openssl/0.9.8i_0/opt/local/etc/openssl
-export SSL_PATH
-
-YASM_PATH=/opt/local/bin/yasm
-export YASM_PATH
-
-CVS_RSH=ssh
-export CVS_RSH
-
-CVSROOT=rfoster@192.168.0.130:/cvs
-export CVSROOT
-# Make bash check its window size after a process completes
+# update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-#relocation etc...
-alias code="cd /Users/rfoster/Documents/Code/"
+# If set, the pattern "**" used in a pathname expansion context will
+# match all files and zero or more directories and subdirectories.
+#shopt -s globstar
 
-#archive
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+# set variable identifying the chroot you work in (used in the prompt below)
+if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+  debian_chroot=$(cat /etc/debian_chroot)
+fi
+
+# set a fancy prompt (non-color, unless we know we "want" color)
+case "$TERM" in
+  xterm-color) color_prompt=yes;;
+esac
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+  alias ls='ls -G'
+  alias grep='grep --color=auto'
+  alias fgrep='fgrep --color=auto'
+  alias egrep='egrep --color=auto'
+fi
+alias ls='ls -G'
+
+#LS_COLORS='di=1;34:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=1;32:*.rpm=90'
+#export LS_COLORS
+
+export CLICOLOR=1
+export LSCOLORS=GxFxCxDxBxegedabagaced
+#export LS_COLORS
+
+# uncomment for a colored prompt, if the terminal has the capability; turned
+# off by default to not distract the user: the focus in a terminal window
+# should be on the output of commands, not on the prompt
+#force_color_prompt=yes
+
+if [ -n "$force_color_prompt" ]; then
+  if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+    # We have color support; assume it's compliant with Ecma-48
+    # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+    # a case would tend to support setf rather than setaf.)
+    color_prompt=yes
+  else
+    color_prompt=
+  fi
+fi
+
+if [ "$color_prompt" = yes ]; then
+  PS1='[${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u :\[\033[01;34m\]\w\[\033[00m\]]\n>> '
+else
+  PS1='[${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u :\[\033[01;34m\]\w\[\033[00m\]]\n>> '
+fi
+unset color_prompt force_color_prompt
+
+# If this is an xterm set the title to user@host:dir
+case "$TERM" in
+  xterm*|rxvt*)
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u \w\a\]$PS1"
+    ;;
+  *)
+    ;;
+esac
+
+# reset
+#PS1='${debian_chroot:+($debian_chroot)}\u >> '
+
+# colored GCC warnings and errors
+#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+# some more ls aliases
+alias ll='ls -alFhtr'
+alias la='ls -A'
+alias l='ls -CF'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+  . ~/.bash_aliases
+fi
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+
+# ENV
+MHOME=/Users/rfoster
+
+#BOWER_HOME=$MHOME/Utils/node_modules/bower
+PATH=$PATH:/usr/share:$MHOME/Utils/scripts:$MHOME/bin
+#PATH=$PATH:/usr/share:$BOWER_HOME/bin:$MHOME/Utils/scripts:$MHOME/bin
+# AWS
+export AWS_HOME=$MHOME/Library/Python/3.7/bin
+export AWS_DEFAULT_PROFILE=profilename
+PATH=/usr/local/Cellar/python3/3.7.3/bin:$AWS_HOME:$PATH
+JAVA_HOME=/usr/bin:/usr/lib/jvm/java-7-openjdk-amd64
+XSB_HOME=/home/rfoster/development/workspace/repository-manager/XSB/bin
+CLASSPATH=.
+
+DYLD_LIBRARY_PATH=/usr/lib:/usr/local/lib
+PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/lib/x86_64-linux-gnu
+
+# Python path env
+export PYTHONPATH=.
+alias python2='/usr/bin/python'
+#alias python='python3'
+alias python='/usr/local/Cellar/python3/3.7.3/bin/python3.7'
+alias python3='python'
+#alias pip='pip3'
+alias pip='/usr/local/Cellar/python3/3.7.3/bin/pip3.7'
+alias pythonc='python -m py_compile' # compile only
+alias pdb='python -m pdb'
+export PYTHONPATH='/usr/local/Cellar/python3/3.7.3/bin/python3.7:/usr/local/Cellar/python3/3.7.3/bin/python3.7/bin:$PYTHONPATH'
+
+# shortcuts
 alias mtar='tar -czvf'
 alias utar='tar -xzvf'
+alias mtarb='tar -cjvf'
+alias utarb='tar -xjvf'
+alias drm='sudo rm -Rf'
+alias dcp='cp -Rf'
 
-#search
+alias cllog='rm *.log'
+alias clean='rm *.o'
+
+alias dev="pushd $MHOME/Dev"
+alias scripts="pushd $MHOME/Utils/scripts"
+alias doc="pushd $MHOME/Documents"
+alias pscp="pushd $MHOME/SCP-2.16.0"
+alias pdf='gnome-open'
+alias cvm="$MHOME/Utils/scripts/clonevm.sh"
+
+# search
 alias grip='grep -irl'
-alias nfind='find . -name'
-alias ifind='find . -iname'
+alias ngrep='grep -irn'
+alias ifnd='find . -iname'
+alias nfnd='find . -name'
+alias utls='cd $MHOME/Utils'
+alias fkill='kill -9'
 
-#apply changes to this file
-alias abash='source /etc/bashrc'
+# open files
+alias mbash='gvim ~/.bashrc'
+alias tip='vi ~/Documents/tips.txt'
+#alias tip='vim ~/Documents/tips.txt'
 
-alias tkdiff="/Applications/TkDiff.app/Contents/MacOS/Wish\ Shell"
+alias vi='/usr/bin/vim'
+alias vmm='virt-manager'
+alias vms='sudo virsh start'
 
-alias drm='rm -rf'
+alias vmsa='for hn in A B C D E F G H ; do sudo virsh start Cent6$hn ; done'
 
-alias dcp='cp -rf'
+alias vmk='sudo virsh shutdown'
+alias diff='tkdiff'
 
-alias ll='ls -la'
+# TODO: alias bower=''
+alias iconf='ifconfig | grep "inet addr:"'
 
-#Metasploit
-alias msfcli='/Users/rfoster/Documents/Code/msf3/msfconsole'
-alias msfpl='/Users/rfoster/Documents/Code/msf3/msfpayload'
+# git TODO
+#export GIT_HOME=10.2.98.44
+#alias gclone="git clone git@$GIT_HOME:"
+alias gitpb='git push -u origin'
+alias gitgui='git gui&'
+alias gitk='gitk &'
+alias gitka='gitk --a &'
+alias gitkh='gitk cmommit history &'
+alias gitdiff='git difftool -y'
+alias gitup='git fetch && git pull --rebase'
+alias gitlsm='git ls-files -m'
+alias gitmd='git merge dev'
+alias gitlog='git log | vim -R -'
+alias gitrevert='git revert -m 1'
+alias gitenvup='git checkout dev && gitup && git checkout qa && gitup && git checkout prod && gitup; git checkout dev'
+alias prodalog='scp -i ~/.ssh/dev-util-stansberryterminal.pem -r rfoster@ec2-35-153-81-71.compute-1.amazonaws.com:/var/log/sbt/* /Users/rfoster/development/workspace/log/prod/a/'
+alias prodblog='scp -i ~/.ssh/dev-util-stansberryterminal.pem -r rfoster@ec2-34-224-118-83.compute-1.amazonaws.com:/var/log/sbt/* /Users/rfoster/development/workspace/log/prod/b/'
 
-#remote connections
-alias sshksu='ssh linux.cis.ksu.edu'
+# launch crome from terminal ignore output
+#alias chrome='/usr/bin/google-chrome-beta &>/dev/null &'
+alias chrome='google-chrome-stable'
 
-#ksu
-alias ksu='cd /Users/rfoster/Documents/KSU'
+# permissions
+alias amsk='chmod 755 -R' # rwx rx
+alias wmsk='chmod 766 -R' # rwx rw
+alias rmsk='chmod 744 -R' # rwx r
+alias fmsk='chmod 644 -R' # rw  r
 
-#cis 751
-alias 751='cd /Users/rfoster/Documents/KSU/CIS_751/'
+# mount encrypted drives
+#alias mmnt='$MHOME/Utils/scripts/mmnt.sh'
+#alias umnt='$MHOME/Utils/scripts/umnt.sh'
+
+# source bash rc and updatedb for mlocate
+alias abash='source $MHOME/.bashrc'
+#alias udb='sudo updatedb'
+alias udb='sudo /usr/libexec/locate.updatedb'
+
+# change to root user
+alias sroot='sudo su - root'
+alias root='su rfoster'
+
+# mount encrypted drives on start
+#$MHOME/Utils/scripts/mmnt.sh
+
+# ssh
+alias sci='ssh-copy-id'
+# cat ~/.ssh/id_rsa.pub | ssh rfoster-admin@bosp-p-yocto5 'cat >> .ssh/authorized_keys'
+
+# make
+alias remake='make clean; make all; make jenkins'
+alias tmake='make clean; make jenkins && gti'
+
+# libvirt virsh virtmanager
+alias vmrvt='for hn in A B C D E F G H ; do sudo virsh snapshot-revert --domain Cent6$hn ssvm; done'
+alias vmka='for hn in A B C D E F G H ; do sudo virsh shutdown Cent6$hn; done'
+
+#gitk --a #all branch history
+#gitk commit history
+
+# vmw 
+alias pext='pushd /media/rfoster/dskext'
+alias pd='pushd'
+
+# GCC
+alias g++='/usr/bin/g++'
+alias gcc='/usr/bin/gcc'
+
+alias wrk='pushd $MHOME/development/workspace'
+alias sbt='wrk; pushd Stansberry-Terminal-Prototype'
+alias mk1='wrk; pushd Stansberry-Terminal-MkI'
+alias netspec='pushd $MHOME/Documents/Netspective'
+alias sbtdf='sbt; pushd datafactory/python/datafactory'
+alias umnt='diskutil unmount'
+alias wdumnt='umnt /Volumes/PassportPart01 && umnt /Volumes/PassportPart02'
+alias preview='/Applications/Preview.app/Contents/MacOS/Preview'
+#alias sshdf='ssh -i ~/.ssh/dev-util-stansberryterminal.pem ec2-user@ec2-174-129-144-17.compute-1.amazonaws.com'
+alias sshdf='ssh -i ~/.ssh/dev-util-stansberryterminal.pem ec2-user@ec2-34-192-218-219.compute-1.amazonaws.com'
+alias sshdfp='ssh -i ~/.ssh/dev-util-stansberryterminal.pem rfoster@ec2-34-192-218-219.compute-1.amazonaws.com'
+#54.172.194.43
+alias sshcdf='ssh -i ~/.ssh/dev-util-stansberryterminal.pem rfoster@ec2-54-172-194-43.compute-1.amazonaws.com'
+#alias sshstage='ssh -i ~/.ssh/dev-util-stansberryterminal.pem rfoster@ec2-54-172-194-43.compute-1.amazonaws.com'
+alias sshstage='ssh -i ~/.ssh/dev-util-stansberryterminal.pem staging.stansberryterminal.com'
+alias sshes='ssh -i ~/.ssh/sr-phoenix-test.pem ec2-user@ec2-13-58-225-37.us-east-2.compute.amazonaws.com'
+alias ec2cdf='ssh -i ~/.ssh/dev-util-stansberryterminal.pem ec2-user@ec2-54-172-194-43.compute-1.amazonaws.com'
+alias sshci='ssh -i ~/.ssh/dev-util-stansberryterminal.pem jenkins@ec2-34-228-185-96.compute-1.amazonaws.com'
+alias sshdfd='ssh -i ~/.ssh/dev-util-stansberryterminal.pem dev.stansberryterminal.com'
+alias sshdev='ssh -i ~/.ssh/dev-util-stansberryterminal.pem dev.stansberryterminal.com'
+#alias sshqa='ssh -i ~/.ssh/dev-util-stansberryterminal.pem ec2-35-153-81-71.compute-1.amazonaws.com'
+alias sshqa='ssh -i ~/.ssh/dev-util-stansberryterminal.pem qa.stansberryterminal.com'
+alias sshprod='ssh -i ~/.ssh/dev-util-stansberryterminal.pem rfoster@prod.stansberryterminal.com'
+alias udbrew='brew update'
+
+# GOLANG
+export GOPATH="${HOME}/.go"
+export GOROOT="/usr/local/opt/go"
+export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash ] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash ] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash
+
+
+# this is the root folder where all globally installed node packages will  go
+export NPM_PACKAGES="/usr/local/npm_packages"
+export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
+# add to PATH
+export PATH="$NPM_PACKAGES/bin:$PATH"
+
+export MKI=~/development/workspace/Stansberry-Terminal-MkI
+export PYTHONPATH=$MKI:$MKI/common/sbt:$MKI/datafactory/common/ds:$MKI/services/user:$PYTHONPATH
+alias pdb='python -m pdb'
+
+SBTPATH=$HOME/development/workspace/Stansberry-Terminal-Prototype
+SBTDFP=$SBTPATH/datafactory/python/datafactory
+
+export SBTPP=$SBTPATH:$SBTPATH/common:$SBTPATH/services:$SBTDFP
+
+alias sbtpypath=export PYTHONPATH=$SBTPP:$PYTHONPATH
+alias sshuid='ssh -i ~/.ssh/sbt-wui-qa.pem ubuntu@ec2-54-164-177-40.compute-1.amazonaws.com'
+alias sshuip='ssh -i ~/.ssh/sbt-wui-qa.pem ubuntu@ec2-52-70-236-37.compute-1.amazonaws.com'
+alias sshdfdj='ssh -i ~/.ssh/dev-util-stansberryterminal.pem jenkins@ec2-54-172-194-43.compute-1.amazonaws.com'
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+alias sshprodb='ssh -i ~/.ssh/dev-util-stansberryterminal.pem ec2-34-224-118-83.compute-1.amazonaws.com'
+alias sshproda='ssh -i ~/.ssh/dev-util-stansberryterminal.pem ec2-35-153-81-71.compute-1.amazonaws.com'
+alias fproc='ps -ef | grep -i'
+alias updbqa='psql -h dev-datafactory-postgresql-mki-dev.csodrrohkuas.us-east-1.rds.amazonaws.com -p 5432 -U postgres -W userprofile'
+alias updbprod='psql -h prod-datafactory-postgresql-mki.csodrrohkuas.us-east-1.rds.amazonaws.com -p 5432 -U postgres -W userprofile'
+alias sshopenfire='ssh -i ~/.ssh/sr-phoenix-test.pem ec2-user@openfire.stansberryterminal.com'
+
+export NVM_DIR=~/.nvm
+export NVM_HOME=/usr/local/Cellar/nvm/0.33.10
+source $NVM_HOME/nvm.sh
+
+alias listprod='$HOME/development/workspace/scripts/prod.sh | python -m json.tool'
+alias countprod='listprod | grep , | wc -l'
+alias prettyjson='python -m json.tool'
+
+alias ssheast='ssh -i ~/.ssh/dev-util-stansberryterminal.pem ec2-user@ <<'
+alias dskpurge='tmutil listlocalsnapshotdates / | grep 20 | while read f; do tmutil deletelocalsnapshots $f; done'
+alias 7zip='7za'
+
+alias sshvth='ssh rfoster-admin@bosp-p-yocto5'
+alias sshksu='ssh rfoster@cislinux.cis.ksu.edu'
+
+alias sdxumnt='umnt /Volumes/Sdxc128'

@@ -130,7 +130,7 @@ fi
 MHOME=/Users/rfoster
 
 #BOWER_HOME=$MHOME/Utils/node_modules/bower
-PATH=$PATH:/usr/share:$MHOME/Utils/scripts:$MHOME/bin
+PATH=$PATH:/usr/share:/usr/lib:/usr/local/bin:$MHOME/Utils/scripts:$MHOME/bin
 #PATH=$PATH:/usr/share:$BOWER_HOME/bin:$MHOME/Utils/scripts:$MHOME/bin
 # AWS
 export AWS_HOME=$MHOME/Library/Python/3.7/bin

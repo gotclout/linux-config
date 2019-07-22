@@ -581,8 +581,22 @@ command loop while sleep 5; do ls -la  .; done
 
  repeat last command
  !!
+ 
+ list all users	
+ cat /etc/passwd 	
 
-mac os
+ sudo visudo modify sudoers	
+
+ get linux installation / version info	
+cat /etc/*-release	
+
+ git delete dir from repo keep locally	
+git rm -r <dir>	
+
+
+ last reboot	mac os
+who -bmac os
+
 disk restore purgeable
 tmutil listlocalsnapshotdates / | grep 20 | while read f; do tmutil deletelocalsnapshots $f; done
 sudo purge

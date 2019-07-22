@@ -229,6 +229,8 @@ du ­b | sort –n
 
 du ­skh * | sort ­n
 
+du -H -s -k | sort -n
+
 backup script
 
 github script
@@ -428,7 +430,7 @@ add key to host
 ssh-copy-id
 
 symbolic link
-ls -s existing file link file
+ln -s existing file link file
 rm link file
 unlink link file
 
@@ -436,6 +438,8 @@ list open ports
 nmap -sT -O localhost
 netstat -e -l
 lsof | grep port
+lsof -t -i:port
+mac?  lsof -iTCP -sTCP:LISTEN
 info for ip/port request
 curl ip:port
 
@@ -577,17 +581,23 @@ command loop while sleep 5; do ls -la  .; done
 
  repeat last command
  !!
- 
- list all users
- cat /etc/passwd 
 
-sudo visudo modify sudoers
+mac os
+disk restore purgeable
+tmutil listlocalsnapshotdates / | grep 20 | while read f; do tmutil deletelocalsnapshots $f; done
+sudo purge
 
-get linux installation / version info
-cat /etc/*-release
+Remove login history
+sudo -rm -rf /var/log/wtmp 
+sudo rm -rf  /var/log/btmp
+clear bash history
+cat /dev/null > ~/.bash_history
+history -c
 
-git delete dir from repo keep locally
-git rm -r <dir>
+restart network debian/ubuntu
+sudo /etc/init.d/network-manager restart
 
-last reboot
-who -b
+macos
+prioritize time machine
+sudo sysctl debug.lowpri_throttle_enabled=0
+# add to /Library/LaunchDaemons/nothrottle.plist

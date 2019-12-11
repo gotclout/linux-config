@@ -16,7 +16,7 @@ scp ­r copy directories
 
 chmod ­r recurssive change files info
 
-export DYLD_LIBRARY_PATH=/Users/rfoster/Documents/CIS_764/instantclient_10_2 example export
+export DYLD_LIBRARY_PATH=/Users/user/Documents/CIS_764/instantclient_10_2 example export
 
 global path editing /etc/path
 
@@ -31,9 +31,9 @@ GET PUT POST>require user username</LIMIT>use htpasswd ­c .htpasswd username to
 
 /Applications/Utilities/Terminal.app/Contents/MacOS/Terminal &
 
-sqlplus rfoster/cis764@//oracle.cis.ksu.edu:1521/ORACLE @/Users/rfoster/Documents/CIS_764/introduction/loadpo.sql
+sqlplus user/cis764@//oracle.cis.ksu.edu:1521/ORACLE @/Users/user/Documents/CIS_764/introduction/loadpo.sql
 
-sqlplus rfoster/cis764@//oracle.cis.ksu.edu:1521/ORACLE @/Users/rfoster/Documents/CIS_764/introduction/poexample.sql
+sqlplus user/cis764@//oracle.cis.ksu.edu:1521/ORACLE @/Users/user/Documents/CIS_764/introduction/poexample.sql
 
 defaults write com.apple.Finder AppleShowAllFiles YES show hidden files
 
@@ -213,7 +213,7 @@ alias xtar tar –xzvf
 
 list files by user name redirect to file
 
-ls /tmp ­lhR | grep rfoster > m.out
+ls /tmp ­lhR | grep user > m.out
 
 long listing of files in the current directory whose name contain .log
 
@@ -263,21 +263,21 @@ no name or passphrase
 
 copy to destination machine
 
-scp rfoster@192.168.101.105:/home/rfoster/.ssh/id_dsa.pub rfoster.kaga­5.pub
+scp user@192.168.101.105:/home/user/.ssh/id_dsa.pub user.kaga­5.pub
 
 append to authorized_keys2
 
-cat rfoster.kaga­5.pub > authorized_keys2
+cat user.kaga­5.pub > authorized_keys2
 
 you need the .ssh dir in your home location
 
 should have
 
-­rw­­­­­­­. 1 rfoster users 668 2011­05­12 12:06 id_dsa
+­rw­­­­­­­. 1 user users 668 2011­05­12 12:06 id_dsa
 
-­rw­r­­r­­. 1 rfoster users 604 2011­05­12 12:06 id_dsa.pub
+­rw­r­­r­­. 1 user users 604 2011­05­12 12:06 id_dsa.pub
 
-­rw­r­­r­­. 1 rfoster users 634 2011­05­12 09:15 known_hosts
+­rw­r­­r­­. 1 user users 634 2011­05­12 09:15 known_hosts
 
 g++ ­Wall ­Wextra
 
@@ -339,15 +339,15 @@ modify .desktop
  ~/Desktop/.desktop
 
 add user with root access
- adduser rfoster -G root
- sudo passwd rfoster
+ adduser user -G root
+ sudo passwd user
  rpm -ivh {rpm-file}
 give user admin priv
 sudo adduser stbadmin sudo
 visudo add line with root but replace with username
 
 change owner recurssive
- chown rfoster. -R ./
+ chown user. -R ./
 
 remove trailing whilte space vim
 :%s/\s\+$//
@@ -355,7 +355,7 @@ remove trailing whilte space vim
 remove leading white space vim
 :%s/\s\+$
 
-ssh-keygen -t rsa -C "rfoster@cyberpointllc.com"
+ssh-keygen -t rsa -C "user@cyberpointllc.com"
 cat ~/.ssh/id_rsa.pub
 ssh-add ~/.ssh/id_rsa
 
@@ -365,7 +365,7 @@ ssh-copy-id 192.168.122.183
 CP Git
 create init
  ~/.artifactory_credentials
-   1 rfoster:{DESede}txFBcNuUhrrhpXEYGyzMhw==
+   1 user:{DESede}txFBcNuUhrrhpXEYGyzMhw==
  ~/.artifactory_info
    1 https://jenkins.whitehall.cyberpointllc.com/artifactory
      2 repo
@@ -395,7 +395,7 @@ apt get issues modify trusty edit
 top sort by mem desc
 top -o %MEM
 
-rfoster to root
+user to root
 sudo su - root
 
 vmm clone
@@ -416,7 +416,7 @@ virsh pools
 virsh pool-list --all
 
 create pool
-sudo virsh pool-create-as --name VM --type dir --target /home/rfoster/manual
+sudo virsh pool-create-as --name VM --type dir --target /home/user/manual
 
 destroy pool
 virsh pool-destroy grotesquestorm-1.3.0
@@ -456,15 +456,15 @@ git gui&
 gitk &
 
 
-git branch -D rfoster-exif
+git branch -D user-exif
 # Delete a branch irrespective of its merged status.
-git branch rfoster_etl_node_manager
+git branch user_etl_node_manager
 # create this branch
-git branch -f rfoster_etl_node_manager
+git branch -f user_etl_node_manager
 git checkout rfostre_etl_node_manager
 # force create this branch
 # check and modify for initial commit then use
-git push --set-upstream origin rfoster_etl_node_manager
+git push --set-upstream origin user_etl_node_manager
 # this will add the new branch to the upstream/parent branch
 git commit -m "Comments"
 git commit --all
@@ -552,10 +552,10 @@ command loop while sleep 5; do ls -la  .; done
 #add group and add existing user to group		 +
  # create group devadmin
  sudo groupadd devadmin
- # rfoster to devadmin group and root
- sudo usermod -a -G  root,devadmin rfoster
+ # user to devadmin group and root
+ sudo usermod -a -G  root,devadmin user
  change owner and group recurssive
- chown rfoster:devadmin -R ./
+ chown user:devadmin -R ./
  #git diff against branch
  #git diff <current> <target> -- myfile.cs
  git diff dev master -- readme.txt
@@ -615,3 +615,4 @@ macos
 prioritize time machine
 sudo sysctl debug.lowpri_throttle_enabled=0
 # add to /Library/LaunchDaemons/nothrottle.plist
+

@@ -1,0 +1,338 @@
+# ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
+
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+# formate date time
+export HISTTIMEFORMAT="%m:%d:20%y:%T "
+
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# If set, the pattern "**" used in a pathname expansion context will
+# match all files and zero or more directories and subdirectories.
+#shopt -s globstar
+
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+# set variable identifying the chroot you work in (used in the prompt below)
+if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
+
+# set a fancy prompt (non-color, unless we know we "want" color)
+case "$TERM" in
+    xterm-color) color_prompt=yes;;
+esac
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+alias ls='ls --color'
+LS_COLORS='di=1:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=1;32:*.rpm=90'
+export LS_COLORS
+
+# uncomment for a colored prompt, if the terminal has the capability; turned
+# off by default to not distract the user: the focus in a terminal window
+# should be on the output of commands, not on the prompt
+#force_color_prompt=yes
+
+if [ -n "$force_color_prompt" ]; then
+    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+	# We have color support; assume it's compliant with Ecma-48
+	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+	# a case would tend to support setf rather than setaf.)
+	color_prompt=yes
+    else
+	color_prompt=
+    fi
+fi
+
+if [ "$color_prompt" = yes ]; then
+    PS1='[${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u :\[\033[01;34m\]\w\[\033[00m\]]\n>> '
+else
+    PS1='[${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u :\[\033[01;34m\]\w\[\033[00m\]]\n>> '
+fi
+unset color_prompt force_color_prompt
+
+# If this is an xterm set the title to user@host:dir
+case "$TERM" in
+xterm*|rxvt*)
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u \w\a\]$PS1"
+    ;;
+*)
+    ;;
+esac
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+
+# Start SSH Agent
+#----------------------------
+SSH_ENV="$HOME/.ssh/environment"
+
+function run_ssh_env {
+  . "${SSH_ENV}" > /dev/null
+}
+
+function start_ssh_agent {
+  echo "Initializing new SSH agent..."
+  ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
+  echo "succeeded"
+  chmod 600 "${SSH_ENV}"
+
+  run_ssh_env;
+
+  ssh-add ~/.ssh/id_rsa;
+}
+
+if [ -f "${SSH_ENV}" ]; then
+  run_ssh_env;
+  ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+    start_ssh_agent;
+  }
+else
+  start_ssh_agent;
+fi
+
+# ENV
+MHOME='/c/Users/<user>'
+
+#BOWER_HOME=$MHOME/Utils/node_modules/bower
+export PATH=/c/Development/utils/7-zip:/c/Development/Python38:/c/Development/Python38/Scripts:/c:$MHOME/bin:/c/Python38:/c/Python38/Scripts:/c/mingw64/bin:/c/mingw32/bin:/c/mingw32/i686-w64-mingw32/bin:/c/JDK/bin:/c/JRE/bin:/c/msys64/mingw64/bin:/c/Development/utils/remeld:$PATH
+export PATH=/c/ProgramData/chocolatey/lib/mingw/tools/install/mingw64/bin:/c/Development/utils/7-zip:/c/Program\ Files/Git/bin:/c/Development/utils/pyutils/pcharm/bin:$PATH:/usr/bin:/c/Python38/Scripts/aws:/c/Development/utils/vim:/c/Development/utils/vim/vim80
+#export PATH=/usr/bin:$PATH
+
+#JAVA_HOME=/usr/bin:/usr/lib/jvm/java-7-openjdk-amd64
+export JAVA_HOME=/c/Program\ Files/Java/jdk1.8.0_201
+# export AWS_HOME=
+# export AWS_ACCESS_KEY_ID=
+# export AWS_SECRET_ACCESS_KEY=
+export AWS_DEFAULT_PROFILE=default
+export AWS_PROFILE=default
+XSB_HOME=/home/stbadmin/repository-manager/XSB/bin
+CLASSPATH=.
+#GCC_PATH=
+
+LD_LIBRARY_PATH=/c/ProgramData/chocolatey/lib/mingw/tools/install/mingw64/libexec/gcc/x86_64-w64-mingw32/8.1.0:/lib:/lib64:/usr/lib:/etc/libvirt:$BOWER_HOME/lib
+export PKG_CONFIG_PATH=/usr/lib/pkgconfiglite
+
+# shortcuts
+alias mtar='tar -czvf'
+alias utar='tar -xzvf'
+alias mtarb='tar -cjvf'
+alias utarb='tar -xjvf'
+alias drm='rm -rf'
+alias dcp='cp -rf'
+
+alias cllog='rm *.log'
+alias clean='rm *.o'
+
+# search
+alias grip='grep -irl'
+alias ngrep='grep -irn'
+alias ifnd='find . -iname'
+alias efnd='find . -type f -empty -delete'
+alias nfnd='find . -name'
+alias utls='cd $MHOME/Utils'
+alias fkill='kill -9'
+
+# open/edit files
+alias vi='vim' #'/bin/view.exe'
+alias ggvim='/usr/bin/gvim/gvim'
+gvim()
+{
+  ggvim "$@" &
+}
+
+alias gvtab='gvim --remote-silent +e'
+alias gv='gvtab'
+alias mbash='gvim ~/.bashrc'
+alias tip='vim /c/development/doc/tips.txt'
+#alias atip=" >> /c/development/doc/tips.txt
+alias vmm='virt-manager'
+alias vms='sudo virsh start'
+
+alias vmsa='for hn in A B C D E F G H ; do sudo virsh start Cent6$hn ; done'
+
+alias vmk='sudo virsh shutdown'
+#alias diff='tkdiff'
+alias python2='/c/msys64/mingw64/bin/python2.7'
+#alias python='python2'
+#alias scons=/c/Python27/Scripts/scons.py
+# TODO: alias bower=''
+alias iconf='ifconfig | grep "inet addr:"'
+
+# git TODO
+#export GIT_HOME=10.2.98.44
+#alias gclone="git clone git@$GIT_HOME:"
+alias gitpb='git push -u origin'
+alias gitgui='git gui&'
+alias gitk='gitk &'
+alias gitka='gitk --a &'
+alias gitkh='gitk cmommit history &'
+alias gitdiff='git difftool -y &'
+alias gitup='git fetch && git pull --rebase'
+alias gitlsm='git ls-files -m'
+alias gitmd='git merge dev'
+alias gitlog='git log | vim -R -'
+alias gitrevert='git revert -m 1'
+
+# launch crome from terminal ignore output
+#alias chrome='/usr/bin/google-chrome-beta &>/dev/null &'
+alias chrome='google-chrome-stable'
+
+# permissions
+alias amsk='chmod 755 -R' # rwx rx
+alias wmsk='chmod 766 -R' # rwx rw
+alias rmsk='chmod 744 -R' # rwx r
+alias fmsk='chmod 644 -R' # rw  r
+
+# mount encrypted drives
+#alias mmnt='$MHOME/Utils/scripts/mmnt.sh'
+#alias umnt='$MHOME/Utils/scripts/umnt.sh'
+
+# source bash rc and updatedb for mlocate
+alias abash='source $MHOME/.bashrc'
+#alias abash='source /.bashrc'
+#alias udb="updatedb --localpaths='/c/'"
+alias udb='updatedb --localpaths=/c &'
+
+# change to root user
+alias sroot='sudo su - root'
+
+# mount encrypted drives on start
+#$MHOME/Utils/scripts/mmnt.sh
+
+# ssh
+alias sci='ssh-copy-id'
+
+# TODO map mac addr to ip via virtsetup
+# Then gen aliases for for hn in A B C D E F G H ; do alias sshc$hn='
+
+# make
+alias amake='make clean; make develop; make all; make jenkins'
+alias etlmake='make clean-cache; make etl_node'
+alias remake='make clean; make all; make jenkins'
+alias tmake='make clean; make jenkins && gti'
+
+# libvirt virsh virtmanager
+alias vmrvt='for hn in A B C D E F G H ; do sudo virsh snapshot-revert --domain Cent6$hn ssvm; done'
+alias vmka='for hn in A B C D E F G H ; do sudo virsh shutdown Cent6$hn; done'
+
+#gitk --a #all branch history
+#gitk commit history
+
+# vmw 
+alias pext='pushd /media/stbadmin/dskext'
+
+# GCC
+alias gcc5='/usr/bin/gcc'
+alias gcc4='/usr/bin/gcc-4.9'
+alias gcc4='/usr/bin/gcc-4.8'
+alias g++5='/usr/bin/g++'
+alias g++4='/usr/bin/g++-4.8'
+
+alias wrk='pushd /c/Development/workspace'
+alias lm='pushd /c/Development/workspace/lm'
+alias lmop='pushd /c/Development/workspace/lm/tmp/optools-mba'
+alias lmou='pushd /c/Development/workspace/lm/lm-devops-oputils'
+alias lms3='pushd /c/Development/workspace/lm/lm-s3-transfers-api'
+alias meld='/c/Development/utils/remeld/Meld.exe'
+alias diff='meld'
+alias man=/usr/bin/man.sh
+alias sqlite3='winpty sqlite3'
+export PROLOG_HOME='/c/bin/swipl'
+alias prolog="winpty $PROLOG_HOME/bin/swipl"
+
+#FIXME
+#export PYHOME=/c/Python38
+export PYHOME=/c/Development/Python38
+export PYTHONPATH=$PYHOME:$PYHOME/Scripts:.:../:../common
+export PYTHONPATH="C:\\Development\\Python38\\;C:\\Development\\Python38\\Scripts;.;..\\common;..\\;..\\services;..\\services\\utils"
+#alias python3='/c/Python38/python'
+alias python3="$PYHOME/python"
+alias python='winpty python'
+alias pythonc='python -m py_compile'
+alias pdb='python -m pdb'
+alias clpy='find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf'
+# alias pcharm='nohup pcharm64.exe &'
+# alias pcharm='pcharm64.exe > /dev/null 2>&1 &'
+alias pcharm='pycharm64.exe > /dev/null 2>&1 &'
+alias pip3="$PYHOME/Scripts/pip3"
+alias pip="pip3"
+alias aws="winpty $PYHOME/Scripts/aws.cmd"
+alias pipv='pip show'
+alias pips='pip show'
+alias pipls='pip list'
+alias ifconfig='ipconfig'
+
+export GOROOT=/c/Go
+export GCC_ROOT=/c/mingw64
+export GO_BINDATA_ROOT=$MHOME/.go/src/github.com/jteeuwen/go-bindata
+export GB_ROOT=$MHOME/.go/src/github.com/constabulary/gb
+export NODEJS_ROOT=/c/bin/nodejs
+#export PATH=$PATH:/c/bin/activator-1.3.7:$GOROOT/bin:$GB_ROOT:$NODEJS_ROOT:$GCC_ROOT/bin:$GO_BINDATA_ROOT:`pwd`
+export GOPATH=$MHOME/.go:/c/Development/workspace:`pwd`
+export GOPATH=$GOPATH:/c/Development/workspace
+
+alias man='tldr'
+# FixMe
+alias make='/c/ProgramData/chocolatey/bin/mingw32-make.exe'
+
+alias zip='/c/ProgramData/chocolatey/bin/zip'
+alias unzip='/c/ProgramData/chocolatey/bin/unzip'
+# alias sshmidserv='ssh -i ~/.ssh/ServiceNowMidserverLinux.pem ec2-user@10.105.3.226'
+alias arcs3='drm /c/Development/archives/s3tx/*; drm /c/Development/archives/s3tx.tgz; lms3; clpy; dcp common conf functions infra scripts services Dockerfile requirements.txt /c/Development/archives/s3tx; popd; pushd /c/Development/archives; mtar s3tx.tgz s3tx/*; popd'
+alias arcop='drm /c/Development/archives/optools/*; drm /c/Development/archives/optools.tgz; dcp common conf functions hygieia scripts services test sftp requirements.txt /c/Development/archives/optools; pushd /c/Development/archives; mtar optools.tgz optools/*; popd'
+
+export LIBRARY_PATH="C:/ProgramData/chocolatey/lib/mingw/tools/install/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/;C:/ProgramData/chocolatey/lib/mingw/tools/install/mingw64/bin/../lib/gcc/;C:/ProgramData/chocolatey/lib/mingw/tools/install/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib/../lib/;C:/ProgramData/chocolatey/lib/mingw/tools/install/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../lib/;C:/ProgramData/chocolatey/lib/mingw/tools/install/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/lib/;C:/ProgramData/chocolatey/lib/mingw/tools/install/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../"
+

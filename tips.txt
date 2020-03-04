@@ -616,3 +616,22 @@ prioritize time machine
 sudo sysctl debug.lowpri_throttle_enabled=0
 # add to /Library/LaunchDaemons/nothrottle.plist
 
+gvim open file in existing window
+ gvim --remote-silent +e <file>
+ grep n chars before and after
+ cat file.txt | grep -o -P '.{0,20}string.{0,20}'
+
+ config local time
+ zone
+
+  sudo rm -rf /etc/localtime && sudo ln -s /usr/share/zoneinfo/US/Eastern /etc/localtime
+
+sudo hostname SNMSNIXSSD00
+sudo vi /etc/sysconfig/network hostname="HOSTNAME"
+or sudo vi /etc/hostname /etc/init.d/hostname
+
+delete empty files in dir
+find ./log/ -type f -empty -delete
+
+set default editor (visudo nano -> vim)
+sudo update-alternatives --config editor

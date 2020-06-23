@@ -51,6 +51,7 @@ if [ -x /usr/bin/dircolors ]; then
   alias egrep='egrep --color=auto'
 fi
 alias ls='ls -G'
+alias ll='ls -Gla'
 
 #LS_COLORS='di=1;34:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=1;32:*.rpm=90'
 #export LS_COLORS
@@ -97,14 +98,6 @@ esac
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# some more ls aliases
-alias ll='ls -alFhtr'
-alias la='ls -A'
-alias l='ls -CF'
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -129,158 +122,32 @@ fi
 # ENV
 MHOME=/Users/rfoster
 
-#BOWER_HOME=$MHOME/Utils/node_modules/bower
-PATH=$PATH:/usr/share:$MHOME/Utils/scripts:$MHOME/bin
-#PATH=$PATH:/usr/share:$BOWER_HOME/bin:$MHOME/Utils/scripts:$MHOME/bin
+# TODO
+##BOWER_HOME=$MHOME/Utils/node_modules/bower
+##PATH=$PATH:/usr/share:$BOWER_HOME/bin:$MHOME/Utils/scripts:$MHOME/bin
+
+PATH=$PATH:/usr/share:/usr/local/bin:/usr/include:$MHOME/Utils/scripts:$MHOME/bin
+
 # AWS
-export AWS_HOME=$MHOME/Library/Python/3.6/bin
-export AWS_DEFAULT_PROFILE=profilename
-PATH=/usr/local/Cellar/python3/3.6.1/bin:$AWS_HOME:$PATH
+export AWS_HOME=$HOME/Library/Python/3.7/bin
+# export AWS_DEFAULT_PROFILE=profilename
+PATH=/usr/local/Cellar/python3/3.7.4/bin:$AWS_HOME:$PATH
 JAVA_HOME=/usr/bin:/usr/lib/jvm/java-7-openjdk-amd64
 XSB_HOME=/home/rfoster/development/workspace/repository-manager/XSB/bin
 CLASSPATH=.
 
-DYLD_LIBRARY_PATH=/usr/lib:/usr/local/lib
+# Development
+DYLD_LIBRARY_PATH=/usr/loca/lin:/usr/lib
 PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/lib/x86_64-linux-gnu
 
 # Python path env
 export PYTHONPATH=.
-alias python2='/usr/bin/python'
-#alias python='python3'
-alias python='/usr/local/Cellar/python3/3.6.1/bin/python3.6'
-alias python3='python'
-#alias pip='pip3'
-alias pip='/usr/local/Cellar/python3/3.6.1/bin/pip3.6'
-alias pythonc='python -m py_compile' # compile only
+export PYTHONPATH=/usr/local/Cellar/python3/3.7.4/bin/python3.7:/usr/local/Cellar/python3/3.7.4/bin/python3.7/bin:$PYTHONPATH
 
-# shortcuts
-alias mtar='tar -czvf'
-alias utar='tar -xzvf'
-alias mtarb='tar -cjvf'
-alias utarb='tar -xjvf'
-alias drm='sudo rm -Rf'
-alias dcp='cp -Rf'
-
-alias cllog='rm *.log'
-alias clean='rm *.o'
-
-alias dev="pushd $MHOME/Dev"
-alias scripts="pushd $MHOME/Utils/scripts"
-alias doc="pushd $MHOME/Documents"
-alias pscp="pushd $MHOME/SCP-2.16.0"
-alias pdf='gnome-open'
-alias cvm="$MHOME/Utils/scripts/clonevm.sh"
-
-# search
-alias grip='grep -irl'
-alias ngrep='grep -irn'
-alias ifnd='find . -iname'
-alias nfnd='find . -name'
-alias utls='cd $MHOME/Utils'
-alias fkill='kill -9'
-
-# open files
-alias mbash='gvim ~/.bashrc'
-alias tip='vim ~/Documents/tips.txt'
-
-alias vi='/usr/bin/vim'
-alias vmm='virt-manager'
-alias vms='sudo virsh start'
-
-alias vmsa='for hn in A B C D E F G H ; do sudo virsh start Cent6$hn ; done'
-
-alias vmk='sudo virsh shutdown'
-alias diff='tkdiff'
-
-# TODO: alias bower=''
-alias iconf='ifconfig | grep "inet addr:"'
-
-# git TODO
-export GIT_HOME=10.2.98.44
-alias gclone="git clone git@$GIT_HOME:"
-alias gitpb='git push -u origin'
-alias gitgui='git gui&'
-alias gitk='gitk &'
-alias gitka='gitk --a &'
-alias gitkh='gitk cmommit history &'
-alias gitdiff='git difftool -y'
-alias gitup='git fetch && git pull --rebase'
-alias gitlsm='git ls-files -m'
-alias gitmd='git merge dev'
-
-# launch crome from terminal ignore output
-#alias chrome='/usr/bin/google-chrome-beta &>/dev/null &'
-alias chrome='google-chrome-stable'
-
-# permissions
-alias amsk='chmod 755 -R' # rwx rx
-alias wmsk='chmod 766 -R' # rwx rw
-alias rmsk='chmod 744 -R' # rwx r
-alias fmsk='chmod 644 -R' # rw  r
-
-# mount encrypted drives
-#alias mmnt='$MHOME/Utils/scripts/mmnt.sh'
-#alias umnt='$MHOME/Utils/scripts/umnt.sh'
-
-# source bash rc and updatedb for mlocate
-alias abash='source $MHOME/.bashrc'
-#alias udb='sudo updatedb'
-alias udb='sudo /usr/libexec/locate.updatedb'
-
-# change to root user
-alias sroot='sudo su - root'
-alias root='su rfoster'
-
-# mount encrypted drives on start
-#$MHOME/Utils/scripts/mmnt.sh
-
-# ssh
-alias sci='ssh-copy-id'
-
-# make
-alias remake='make clean; make all; make jenkins'
-alias tmake='make clean; make jenkins && gti'
-
-# libvirt virsh virtmanager
-alias vmrvt='for hn in A B C D E F G H ; do sudo virsh snapshot-revert --domain Cent6$hn ssvm; done'
-alias vmka='for hn in A B C D E F G H ; do sudo virsh shutdown Cent6$hn; done'
-
-#gitk --a #all branch history
-#gitk commit history
-
-# vmw 
-alias pext='pushd /media/rfoster/dskext'
-alias pd='pushd'
-
-# GCC
-alias g++='/usr/bin/g++'
-alias gcc='/usr/bin/gcc'
-
-alias wrk='pushd $MHOME/development/workspace'
-alias sbt='wrk; pushd Stansberry-Terminal-Prototype'
-alias mk1='wrk; pushd Stansberry-Terminal-MkI'
-alias sbtdf='sbt; pushd datafactory/python/datafactory'
-alias umnt='diskutil unmount'
-alias wdumnt='umnt /Volumes/PassportPart01 && umnt /Volumes/PassportPart02'
-alias preview='/Applications/Preview.app/Contents/MacOS/Preview'
-#alias sshdf='ssh -i ~/.ssh/dev-util-stansberryterminal.pem ec2-user@ec2-174-129-144-17.compute-1.amazonaws.com'
-alias sshdf='ssh -i ~/.ssh/dev-util-stansberryterminal.pem ec2-user@ec2-34-192-218-219.compute-1.amazonaws.com'
-alias sshdfp='ssh -i ~/.ssh/dev-util-stansberryterminal.pem rfoster@ec2-34-192-218-219.compute-1.amazonaws.com'
-#54.172.194.43
-alias sshcdf='ssh -i ~/.ssh/dev-util-stansberryterminal.pem rfoster@ec2-54-172-194-43.compute-1.amazonaws.com'
-#alias sshstage='ssh -i ~/.ssh/dev-util-stansberryterminal.pem rfoster@ec2-54-172-194-43.compute-1.amazonaws.com'
-alias sshstage='ssh -i ~/.ssh/dev-util-stansberryterminal.pem staging.stansberryterminal.com'
-alias sshes='ssh -i ~/.ssh/sr-phoenix-test.pem ec2-user@ec2-13-58-225-37.us-east-2.compute.amazonaws.com'
-alias ec2cdf='ssh -i ~/.ssh/dev-util-stansberryterminal.pem ec2-user@ec2-54-172-194-43.compute-1.amazonaws.com'
-alias sshci='ssh -i ~/.ssh/dev-util-stansberryterminal.pem jenkins@ec2-34-228-185-96.compute-1.amazonaws.com'
-alias sshdfd='ssh -i ~/.ssh/dev-util-stansberryterminal.pem dev.stansberryterminal.com'
-alias sshdev='ssh -i ~/.ssh/dev-util-stansberryterminal.pem dev.stansberryterminal.com'
-#alias sshqa='ssh -i ~/.ssh/dev-util-stansberryterminal.pem ec2-35-153-81-71.compute-1.amazonaws.com'
-alias sshqa='ssh -i ~/.ssh/dev-util-stansberryterminal.pem qa.stansberryterminal.com'
-alias sshprod='ssh -i ~/.ssh/dev-util-stansberryterminal.pem rfoster@prod.stansberryterminal.com'
-alias udbrew='brew update'
-
-# TODO: Remove if unused
+# GOLANG
+export GOPATH="${HOME}/.go"
+export GOROOT="/usr/local/opt/go"
+export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
 [ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash ] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash
@@ -289,24 +156,32 @@ alias udbrew='brew update'
 [ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash ] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash
 
 
+##
+# NPM + NVM
 # this is the root folder where all globally installed node packages will  go
+##
 export NPM_PACKAGES="/usr/local/npm_packages"
 export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
+export PATH="$NPM_PACKAGES/bin:$PATH" # add to PATH
 
-# add to PATH
-export PATH="$NPM_PACKAGES/bin:$PATH"
+export NVM_DIR=~/.nvm
+export NVM_HOME=/usr/local/Cellar/nvm/0.35.3
+npm config delete prefix
+npm config set prefix $NVM_DIR/versions/node/v6.11.1
+source $NVM_HOME/nvm.sh
 
-# sbt
-SBTPATH=$HOME/development/workspace/Stansberry-Terminal-Prototype
-SBTDFP=$SBTPATH/datafactory/python/datafactory
-export SBTPP=$SBTPATH:$SBTPATH/common:$SBTPATH/services:$SBTDFP
-
-alias sbtpypath=export PYTHONPATH=$SBTPP
-alias sshuid='ssh -i ~/.ssh/sbt-wui-qa.pem ubuntu@ec2-54-164-177-40.compute-1.amazonaws.com'
-alias sshuip='ssh -i ~/.ssh/sbt-wui-qa.pem ubuntu@ec2-52-70-236-37.compute-1.amazonaws.com'
-alias sshdfdj='ssh -i ~/.ssh/dev-util-stansberryterminal.pem jenkins@ec2-54-172-194-43.compute-1.amazonaws.com'
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
-alias sshprodb='ssh -i ~/.ssh/dev-util-stansberryterminal.pem ec2-34-224-118-83.compute-1.amazonaws.com'
-alias sshproda='ssh -i ~/.ssh/dev-util-stansberryterminal.pem ec2-35-153-81-71.compute-1.amazonaws.com'
-alias gitlog='git log | vim -R -'
-alias fproc='ps -ef | grep -i'
+
+# GOLANG
+export GOPATH=$HOME/development/workspace
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
+
+# WORK LM
+export LMPATH=$HOME/development/workspace/optools
+
+# Additional script files
+export MYSCRIPTS=$HOME/development/workspace/scripts
+export PATH="$MYSCRIPTS:$PATH"
+export PATH="/usr/local/Cellar/gdb/9.2/bin:$PATH:/usr/local/sbin"

@@ -333,6 +333,11 @@ git add cmr.owl
 
 git config --global url."https://".insteadOf git://
 
+git config --global core.excludesfile ~/.gitignore_global
+
+git config --global http.sslVerify false
+
+git remote set-url origin http://cicd-dev-app02.devss.globallmam.com:7990/scm/~rfosterhe2108/optools.git
 
 add desktop icon and exec
 modify .desktop
@@ -343,8 +348,11 @@ add user with root access
  sudo passwd user
  rpm -ivh {rpm-file}
 give user admin priv
-sudo adduser stbadmin sudo
+sudo adduser user sudo
 visudo add line with root but replace with username
+^
+sudo visudo (insert the following)
+%group ALL=(ALL)       NOPASSWD: ALL
 
 change owner recurssive
  chown user. -R ./
@@ -355,7 +363,7 @@ remove trailing whilte space vim
 remove leading white space vim
 :%s/\s\+$
 
-ssh-keygen -t rsa -C "user@cyberpointllc.com"
+ssh-keygen -t rsa -C "user@domain.com"
 cat ~/.ssh/id_rsa.pub
 ssh-add ~/.ssh/id_rsa
 
@@ -442,6 +450,7 @@ lsof -t -i:port
 mac?  lsof -iTCP -sTCP:LISTEN
 info for ip/port request
 curl ip:port
+sudo lsof -i -P -n | grep LISTEM/PORT
 
 git commit -m"Fix typo in introduction to user guide"
 
@@ -577,6 +586,8 @@ command loop while sleep 5; do ls -la  .; done
  Host *
      ServerAliveInterval 60
 
+erase specific history entry 
+history -d <entry#>
  purge clear erase all history
    cat /dev/null > ~/.bash_history && history -c && exit
  note exit and login to verify
@@ -628,6 +639,14 @@ gvim open file in existing window
 
   sudo rm -rf /etc/localtime && sudo ln -s /usr/share/zoneinfo/US/Eastern /etc/localtime
 
+vi vim select and indent/outdent
+enter visual mode shift+v (V)
+arrow up/down to select
+indent shift+. (>) outdent shift+, (<)
+press . to increase indent/ decrease outdent
+shift + >> or <<
+(#) number shift + >> or  <<
+
 sudo hostname SNMSNIXSSD00
 sudo vi /etc/sysconfig/network hostname="HOSTNAME"
 or sudo vi /etc/hostname /etc/init.d/hostname
@@ -637,3 +656,4 @@ find ./log/ -type f -empty -delete
 
 set default editor (visudo nano -> vim)
 sudo update-alternatives --config editor
+

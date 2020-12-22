@@ -459,6 +459,8 @@ gitk &
 git branch -D user-exif
 # Delete a branch irrespective of its merged status.
 git branch user_etl_node_manager
+# Delete a remote branch <origin>
+git push origin -d feature/login
 # create this branch
 git branch -f user_etl_node_manager
 git checkout rfostre_etl_node_manager

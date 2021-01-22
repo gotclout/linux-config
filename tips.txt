@@ -657,3 +657,9 @@ find ./log/ -type f -empty -delete
 set default editor (visudo nano -> vim)
 sudo update-alternatives --config editor
 
+
+*nix
+disable auidble bells beeps etc
+ echo "set bell-style none" >> ~/.inputrc && bind -f ~/.inputrc
+ add to .vimrc
+ set belloff=all
